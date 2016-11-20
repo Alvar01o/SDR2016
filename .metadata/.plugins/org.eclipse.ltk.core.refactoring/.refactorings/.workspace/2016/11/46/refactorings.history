@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;isp-platform&apos; to &apos;subastadora-platform&apos;" description="Rename resource &apos;isp-platform&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/isp-platform" name="subastadora-platform" stamp="1479345356610" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;isp-client-web&apos; to &apos;subastadora-client-web&apos;" description="Rename resource &apos;isp-client-web&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/isp-client-web" name="subastadora-client-web" stamp="1479345373547" updateReferences="true"/>
+</session>

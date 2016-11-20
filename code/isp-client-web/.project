@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>isp-client-web</name>
+	<name>subastadora-client-web</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<location>/home/alvaro/Desktop/Distribuidos/2016/sistema2/code/isp-client-web/target/work/plugins</location>
+			<location>C:/home/alvaro/Desktop/Distribuidos/2016/sistema2/code/isp-client-web/target/work/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>

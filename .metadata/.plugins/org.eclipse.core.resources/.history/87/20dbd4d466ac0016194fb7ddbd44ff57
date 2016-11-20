@@ -1,0 +1,12 @@
+package com.sd.isp.service.country;
+
+import com.sd.isp.dto.location.country.CountryDTO;
+import com.sd.isp.dto.location.country.CountryResult;
+import com.sd.isp.service.base.IBaseService;
+import com.uni.sd.subastadora.dao.country.CountryDaoImpl;
+import com.uni.sd.subastadora.domain.location.country.CountryDomain;
+
+public interface ICountryService extends IBaseService<CountryDTO, CountryDomain, CountryDaoImpl, CountryResult> {
+
+	public CountryResult find(String textToFind);
+}

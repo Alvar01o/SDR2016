@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+D:\FIUNI\7mo 9vo semestres\Proyecto Final SD\Repositorio 1\SDR2016\code\subastadora-platform\subastadora-platform\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3062181926.index
+2970413403.index
+2319126115.index
+4112881722.index
+4219428396.index
+2263659977.index

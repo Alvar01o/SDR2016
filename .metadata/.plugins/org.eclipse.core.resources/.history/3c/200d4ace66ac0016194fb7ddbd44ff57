@@ -1,0 +1,15 @@
+package com.sd.isp.service.base;
+
+import com.sd.isp.dto.base.BaseDTO;
+import com.sd.isp.dto.base.BaseResult;
+import com.uni.sd.subastadora.dao.base.BaseDaoImpl;
+import com.uni.sd.subastadora.domain.base.BaseDomain;
+
+public interface IBaseService<DTO extends BaseDTO, DOMAIN extends BaseDomain, DAO extends BaseDaoImpl<DOMAIN>, R extends BaseResult<DTO>> {
+	public DTO save(DTO dto);
+
+	public DTO getById(Integer id);
+
+	public R getAll();
+
+}
