@@ -13,11 +13,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.uni.sd.subastadora.domain.base.BaseDomain;
-import com.uni.sd.subastadora.domain.location.city.CityDomain;
-import com.uni.sd.subastadora.domain.location.country.CountryDomain;
+import com.uni.sd.subastadora.domain.role.RoleDomain;
 
 @Entity
-@Table(name = "state")
+@Table(name = "user")
 public class UserDomain extends BaseDomain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,8 +39,19 @@ public class UserDomain extends BaseDomain {
 	
 	@Column(name = "password")
 	private String _password;
+
+	@ManyToOne
+	private RoleDomain _role;
 	
-	public Integer getId() {
+	public RoleDomain getRole() {
+			return _role;
+ 	}
+		 
+ 	public void setRole(RoleDomain role) {
+ 		_role = role;
+	}	
+
+ 	public Integer getId() {
 		return _id;
 	}
 

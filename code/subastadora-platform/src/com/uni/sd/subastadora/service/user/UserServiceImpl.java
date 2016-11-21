@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uni.sd.subastadora.dao.role.IRoleDao;
 import com.uni.sd.subastadora.dao.user.UserDaoImpl;
 import com.uni.sd.subastadora.dao.user.IUserDao;
 import com.uni.sd.subastadora.domain.user.UserDomain;
@@ -20,6 +21,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserDTO, UserDomain, UserDa
 	@Autowired
 	private IUserDao userDao;
 
+	@Autowired
+	private IRoleDao roleDao;
+	
 	@Override
 	@Transactional
 	public UserDTO save(UserDTO dto) {
@@ -39,26 +43,26 @@ public class UserServiceImpl extends BaseServiceImpl<UserDTO, UserDomain, UserDa
 	@Override
 	@Transactional
 	public UserResult getAll() {
-		final List<UserDTO> countries = new ArrayList<>();
+		final List<UserDTO> users = new ArrayList<>();
 		for (UserDomain domain : userDao.findAll()) {
 			final UserDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+			users.add(dto);
 		}
 		final UserResult userResult = new UserResult();
-		userResult.setCountries(countries);
+		userResult.setUsers(users);
 		return userResult;
 	}
 
 	@Override
 	@Transactional
 	public UserResult find(String textToFind) {
-		final List<UserDTO> countries = new ArrayList<>();
+		final List<UserDTO> users = new ArrayList<>();
 		for (UserDomain domain : userDao.find(textToFind)) {
 			final UserDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+			users.add(dto);
 		}
 		final UserResult userResult = new UserResult();
-		userResult.setCountries(countries);
+		userResult.setUsers(users);
 		return userResult;
 	}
 
@@ -71,6 +75,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserDTO, UserDomain, UserDa
 		dto.setEmail(domain.getEmail());
 		dto.setUserName(domain.getUserName());
 		dto.setAddress(domain.getaddress());
+		dto.setRolId(domain.getRole().getId());
 		return dto;
 	}
 
@@ -83,6 +88,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserDTO, UserDomain, UserDa
 		domain.setEmail(dto.getEmail());
 		domain.setUserName(dto.getUserName());
 		domain.setAddress(dto.getaddress());
+		domain.setRole(roleDao.getById(dto.getRolId()));
 		return domain;
 	}
 

@@ -11,13 +11,14 @@ import com.uni.sd.subastadora.dto.base.BaseResult;
 public class UserResult extends BaseResult<UserDTO> {
 
 	private static final long serialVersionUID = 1L;
-
-	@XmlElement
-	public List<UserDTO> getCountries() {
-		return getList();
-	}
-
-	public void setCountries(List<UserDTO> dtos) {
-		super.setList(dtos);
-	}
+	
+ 	@XmlElement
+ 	public List<UserDTO> getUsers() {
+ 		return getList();
+ 	}
+ 
+ 	public void setUsers(List<UserDTO> dtos) {
+ 		super.setList(dtos);
+ 	}
+ 	
 }

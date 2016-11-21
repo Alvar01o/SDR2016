@@ -16,7 +16,17 @@ public class UserDTO extends BaseDTO {
 	private String _email;	
 	private String _address;	
 	private String _password;		
-
+	private Integer _rolId;
+	
+	@XmlElement
+ 	public Integer getRolId() {
+ 		return _rolId;
+ 	}
+	
+	public void setRolId(Integer rolId) {
+ 		_rolId = rolId;
+ 	}
+	
 	@XmlElement
 	public String getName() {
 		return _name;
@@ -69,4 +79,7 @@ public class UserDTO extends BaseDTO {
 	public void setPass(String name) {
 		_password = name;
 	}	
+
+
+
 }
