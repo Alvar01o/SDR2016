@@ -37,7 +37,7 @@
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 			</props>
 		</property>
-		<property name="packagesToScan" value="com.sd.uni.subastadora.domain" />
+		<property name="packagesToScan" value="com.uni.sd.subastadora.domain" />
 	</bean>
 
 	<bean id="transactionManager"

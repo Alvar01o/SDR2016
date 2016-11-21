@@ -1,3 +1,4 @@
+
 package com.uni.sd.subastadora.service.country;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import com.uni.sd.subastadora.dao.country.ICountryDao;
 import com.uni.sd.subastadora.domain.location.country.CountryDomain;
 import com.uni.sd.subastadora.dto.location.country.CountryDTO;
 import com.uni.sd.subastadora.dto.location.country.CountryResult;
+
 import com.uni.sd.subastadora.service.base.BaseServiceImpl;
 
 @Service
-public class CountryServiceImpl extends BaseServiceImpl<CountryDTO, CountryDomain, CountryDaoImpl, CountryResult>
-		implements ICountryService {
+public class CountryServiceImpl extends BaseServiceImpl<CountryDTO, CountryDomain, CountryDaoImpl, CountryResult> implements ICountryService {
 	@Autowired
 	private ICountryDao countryDao;
 
@@ -30,7 +31,7 @@ public class CountryServiceImpl extends BaseServiceImpl<CountryDTO, CountryDomai
 
 	@Override
 	@Transactional
-	public CountryDTO getById(Integer id) {
+	public CountryDTO getById(Integer id){
 		final CountryDomain domain = countryDao.getById(id);
 		final CountryDTO dto = convertDomainToDto(domain);
 		return dto;
@@ -41,19 +42,6 @@ public class CountryServiceImpl extends BaseServiceImpl<CountryDTO, CountryDomai
 	public CountryResult getAll() {
 		final List<CountryDTO> countries = new ArrayList<>();
 		for (CountryDomain domain : countryDao.findAll()) {
-			final CountryDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
-		}
-		final CountryResult countryResult = new CountryResult();
-		countryResult.setCountries(countries);
-		return countryResult;
-	}
-
-	@Override
-	@Transactional
-	public CountryResult find(String textToFind) {
-		final List<CountryDTO> countries = new ArrayList<>();
-		for (CountryDomain domain : countryDao.find(textToFind)) {
 			final CountryDTO dto = convertDomainToDto(domain);
 			countries.add(dto);
 		}
@@ -76,6 +64,12 @@ public class CountryServiceImpl extends BaseServiceImpl<CountryDTO, CountryDomai
 		domain.setId(dto.getId());
 		domain.setName(dto.getName());
 		return domain;
+	}
+
+	@Override
+	public CountryResult find(String textToFind){
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
