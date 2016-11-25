@@ -6,12 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.uni.sd.subastadora.dao.auction.AuctionDaoImp;
 import com.uni.sd.subastadora.dao.auction.IAuctionDao;
+import com.uni.sd.subastadora.dao.product.IProductDao;
 import com.uni.sd.subastadora.dao.user.*;
 import com.uni.sd.subastadora.domain.auction.AuctionDomain;
 import com.uni.sd.subastadora.dto.auction.AuctionDTO;
-
 import com.uni.sd.subastadora.dto.auction.AuctionResult;
 import com.uni.sd.subastadora.service.base.BaseServiceImpl;
 
@@ -23,6 +24,9 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionDTO, AuctionDomai
 
 	@Autowired
 	private IUserDao userDao;
+	
+	@Autowired
+	private IProductDao productDao;
 
 	@Override
 	@Transactional
@@ -43,26 +47,26 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionDTO, AuctionDomai
 	@Override
 	@Transactional
 	public AuctionResult getAll() {
-		final List<AuctionDTO> countries = new ArrayList<>();
+		final List<AuctionDTO> auctions = new ArrayList<>();
 		for (AuctionDomain domain : auctionDao.findAll()) {
 			final AuctionDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+			auctions.add(dto);
 		}
 		final AuctionResult auctionResult = new AuctionResult();
-		auctionResult.setCountries(countries);
+		auctionResult.setAuctions(auctions);
 		return auctionResult;
 	}
 
 	@Override
 	@Transactional
 	public AuctionResult find(String textToFind) {
-		final List<AuctionDTO> countries = new ArrayList<>();
+		final List<AuctionDTO> auctions = new ArrayList<>();
 		for (AuctionDomain domain : auctionDao.find(textToFind)) {
 			final AuctionDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+			auctions.add(dto);
 		}
 		final AuctionResult auctionResult = new AuctionResult();
-		auctionResult.setCountries(countries);
+		auctionResult.setAuctions(auctions);
 		return auctionResult;
 	}
 
@@ -72,6 +76,7 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionDTO, AuctionDomai
 		dto.setId(domain.getId());
 		dto.setTime(domain.getTime());
 		dto.setWinnerId(domain.getWinner().getId());
+		dto.setProductId(domain.getProduct().getId());
 		return dto;
 	}
 
@@ -80,6 +85,7 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionDTO, AuctionDomai
 		final AuctionDomain domain = new AuctionDomain();
 		domain.setId(dto.getId());
 		domain.setTime(dto.getTime());
+		domain.setProduct(productDao.getById(dto.getProductId()));
 		try {
 			if (null != dto.getWinnerId()) domain.setWinner(userDao.getById(dto.getWinnerId()) );
 		} catch (Exception e) {

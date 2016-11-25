@@ -13,7 +13,7 @@ public class ProductResult extends BaseResult<ProductDTO> {
 	private static final long serialVersionUID = 1L;
 
 	@XmlElement
-	public List<ProductDTO> getCountries() {
+	public List<ProductDTO> getProducts() {
 		return getList();
 	}
 

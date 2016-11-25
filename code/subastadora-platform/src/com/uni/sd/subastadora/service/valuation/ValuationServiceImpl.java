@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uni.sd.subastadora.dao.auction.AuctionDaoImp;
+import com.uni.sd.subastadora.dao.auction.IAuctionDao;
 import com.uni.sd.subastadora.dao.role.IRoleDao;
 import com.uni.sd.subastadora.dao.user.IUserDao;
 import com.uni.sd.subastadora.dao.valuation.ValuationDaoImpl;
@@ -28,10 +30,10 @@ public class ValuationServiceImpl extends BaseServiceImpl<ValuationDTO, Valuatio
 	@Autowired
 	private IUserDao userDao;
 	
-	/*
+	
 	@Autowired
-	private IAuctionDao auctionDao;
-	*/
+	private IAuctionDao auctionDao=new AuctionDaoImp();
+	
 	
 	@Override
 	@Transactional
@@ -82,7 +84,7 @@ public class ValuationServiceImpl extends BaseServiceImpl<ValuationDTO, Valuatio
 		dto.setScore(domain.getScore());
 		dto.setVoterId(domain.getVoter().getId());
 		dto.setAuctioneerId(domain.getAuctioneer().getId());
-		//dto.setAuctionId(domain.getAuction().getId());
+		dto.setAuctionId(domain.getAuction().getId());
 		return dto;
 	}
 
@@ -93,7 +95,7 @@ public class ValuationServiceImpl extends BaseServiceImpl<ValuationDTO, Valuatio
 		domain.setScore(dto.getScore());
 		domain.setVoter(userDao.getById(dto.getVoterId()));
 		domain.setAuctioneer(userDao.getById(dto.getAuctioneerId()));
-		//domain.setAuction(auctionDao.getById(dto.getAuctionId()));
+		domain.setAuction(auctionDao.getById(dto.getAuctionId()));
 		return domain;
 	}
 

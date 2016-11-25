@@ -16,20 +16,20 @@ public class ValuationDTO extends BaseDTO {
 	private Integer _score;
 	private Integer _auctioneerId;
 	private Integer _voterId;
-	/*private Integer _auctionId;*/
+	private Integer _auctionId;
 	
 	
 	@XmlElement
 	public Integer getScore(){
 		return _score;
 	}
-	/*
+	
 	@XmlElement
 	public Integer getAuctionId(){
 		return _auctionId;
 	}
-	*/
 	
+	@XmlElement
 	public Integer getAuctioneerId(){
 		return _auctioneerId;
 	}
@@ -45,11 +45,11 @@ public class ValuationDTO extends BaseDTO {
 		_score=score;
 	}
 	
-	/*
+	
 	public void setAuctionId(Integer auctionId){
 		_auctionId=auctionId;
 		
-	}*/
+	}
 	
 	public void setVoterId(Integer voterId){
 		_voterId=voterId;

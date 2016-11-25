@@ -3,6 +3,7 @@ package com.uni.sd.subastadora.dto.product;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.uni.sd.subastadora.domain.user.UserDomain;
 import com.uni.sd.subastadora.dto.base.BaseDTO;
 import com.uni.sd.subastadora.util.CategoryEnum;
 
@@ -15,6 +16,7 @@ public class ProductDTO extends BaseDTO {
 	private int _price;
 	private String _shippingInfor;
 	private CategoryEnum _category;
+	private Integer _userId;
 
 	@XmlElement
 	public String getName() {
@@ -24,7 +26,8 @@ public class ProductDTO extends BaseDTO {
 	public void setName(String name) {
 		_name = name;
 	}
-		
+	
+	@XmlElement
 	public String getDescription() {
 		return _description;
 	}
@@ -33,6 +36,7 @@ public class ProductDTO extends BaseDTO {
 		_description = description;
 	}
 	
+	@XmlElement
 	public int getPrice() {
 		return _price;
 	}
@@ -41,6 +45,7 @@ public class ProductDTO extends BaseDTO {
 		_price = price;
 	}
 	
+	@XmlElement
 	public String getShippingInfor() {
 		return _shippingInfor;
 	}
@@ -52,7 +57,19 @@ public class ProductDTO extends BaseDTO {
 	public void setCategory(CategoryEnum category) {
 		_category = category;
 	}
-		public CategoryEnum getCategory() {
+	
+	@XmlElement
+	public CategoryEnum getCategory() {
 		return _category;
+	}
+		
+	public void setUserId(Integer userId) {
+		_userId = userId;
+	}
+		
+	@XmlElement
+	public Integer getUserId() {
+		
+		return _userId;
 	}
 }

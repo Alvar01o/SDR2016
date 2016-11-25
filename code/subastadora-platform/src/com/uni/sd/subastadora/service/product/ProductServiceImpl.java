@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uni.sd.subastadora.dao.product.ProductDaoImpl;
 import com.uni.sd.subastadora.dao.product.IProductDao;
+import com.uni.sd.subastadora.dao.user.IUserDao;
+import com.uni.sd.subastadora.dao.user.UserDaoImpl;
 import com.uni.sd.subastadora.domain.product.ProductDomain;
 import com.uni.sd.subastadora.dto.product.ProductDTO;
 import com.uni.sd.subastadora.dto.product.ProductResult;
@@ -18,7 +20,10 @@ import com.uni.sd.subastadora.service.base.BaseServiceImpl;
 public class ProductServiceImpl extends BaseServiceImpl<ProductDTO, ProductDomain, ProductDaoImpl, ProductResult>
 		implements IProductService {
 	@Autowired
-	private IProductDao productDao;
+	private IProductDao productDao= new ProductDaoImpl();
+	
+	@Autowired
+	private IUserDao userDao=new UserDaoImpl();
 
 	@Override
 	@Transactional
@@ -70,6 +75,7 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductDTO, ProductDomai
 		dto.setDescription(domain.getDescription());
 		dto.setPrice(domain.getPrice());
 		dto.setShippingInfor(domain.getShippingInfor());
+		dto.setUserId(domain.getUser().getId());
 		dto.setCategory(domain.getCategory());
 		return dto;
 	}
@@ -83,6 +89,7 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductDTO, ProductDomai
 		domain.setPrice(dto.getPrice());
 		domain.setShippingInfor(dto.getShippingInfor());
 		domain.setCategory(dto.getCategory());
+		domain.setUser(userDao.getById(dto.getUserId()));
 		
 		return domain;
 	}

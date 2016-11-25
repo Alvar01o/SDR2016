@@ -38,5 +38,21 @@ public class AnnouncementDomain extends BaseDomain {
 	public void setId(Integer id) {
 		_id = id;
 	}
+	
+	
+	public UserDomain getUser() {
+		return _user;
+	}
 
+	public void setUser(UserDomain user) {
+		_user = user;
+	}
+
+	public ProductDomain getProduct() {
+		return _product;
+	}
+
+	public void setProduct(ProductDomain product) {
+		_product = product;
+	}
 }

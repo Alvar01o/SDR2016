@@ -15,8 +15,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import com.uni.sd.subastadora.domain.base.BaseDomain;
+import com.uni.sd.subastadora.domain.location.state.StateDomain;
 import com.uni.sd.subastadora.domain.product.ProductDomain;
 import com.uni.sd.subastadora.domain.user.UserDomain;
+import com.uni.sd.subastadora.domain.announcement.AnnouncementDomain;
 import com.uni.sd.subastadora.domain.auction.AuctionDomain;
 import com.uni.sd.subastadora.util.CategoryEnum;
 
@@ -47,11 +49,11 @@ public class ProductDomain extends BaseDomain {
 	@ManyToOne
 	private UserDomain _user;
 	
-	//@OneToMany(mappedBy="_product")
-	//private Set<AuctionDomain>_auction= new HashSet<AuctionDomain>();
+	@OneToMany(mappedBy="_product")
+	private Set<AuctionDomain>_auctions = new HashSet<>();
 	
-	//@OneToMany(mappedBy="_advertisements")
-	//private Set<AdvertisementsDomain>_advertisements= new HashSet<AdvertisementsDomain>();
+	@OneToMany(mappedBy="_product")
+	private Set<AnnouncementDomain> _announcements = new HashSet<>();
 
 
 	public Integer getId() {
@@ -100,6 +102,29 @@ public class ProductDomain extends BaseDomain {
 		public CategoryEnum getCategory() {
 		return _category;
 	}
+		
+		
+	public UserDomain getUser() {
+		return _user;
+	}
 
+	public void setUser(UserDomain user) {
+		_user = user;
+	}
 
+	public Set<AnnouncementDomain> getAnnouncements() {
+		return _announcements;
+	}
+
+	public void setAnnouncements(Set<AnnouncementDomain> announcements) {
+		this._announcements = announcements;
+	}
+
+	public Set<AuctionDomain> getAuctions() {
+		return _auctions;
+	}
+
+	public void setAuctions(Set<AuctionDomain> auctions) {
+		this._auctions = auctions;
+	}
 }

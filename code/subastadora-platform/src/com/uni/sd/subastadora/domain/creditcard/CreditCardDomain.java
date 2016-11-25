@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.uni.sd.subastadora.domain.base.BaseDomain;
+import com.uni.sd.subastadora.domain.location.state.StateDomain;
 import com.uni.sd.subastadora.domain.user.UserDomain;
 
 @Entity
@@ -33,6 +34,7 @@ public class CreditCardDomain extends BaseDomain {
 
 	@ManyToOne
 	private UserDomain _user;
+	
 	
 	public Integer getId() {
 		return _id;

@@ -34,6 +34,7 @@ public class StateDomain extends BaseDomain {
 	private Set<CityDomain>_cities= new HashSet<CityDomain>();
 
 	
+	
 	public Integer getId() {
 		return _id;
 	}

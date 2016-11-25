@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.uni.sd.subastadora.domain.auction.AuctionDomain;
 import com.uni.sd.subastadora.domain.base.BaseDomain;
 import com.uni.sd.subastadora.domain.role.RoleDomain;
 import com.uni.sd.subastadora.domain.user.UserDomain;
@@ -27,8 +28,8 @@ public class ValuationDomain extends BaseDomain {
 	@Column(name = "score")
 	private Integer _score;
 
-	/*@ManyToOne
-	private AuctionDomain _auction;*/
+	@ManyToOne
+	private AuctionDomain _auction;
 	
 	@ManyToOne 
 	private UserDomain _auctioneer;
@@ -44,11 +45,11 @@ public class ValuationDomain extends BaseDomain {
 	public Integer getScore(){
 		return _score;
 	}
-	/*
-	public ActionDomain getAuction(){
+	
+	public AuctionDomain getAuction(){
 		return _auction;
 	}
-	*/
+	
 	
 	public UserDomain getAuctioneer(){
 		return _auctioneer;
@@ -69,11 +70,11 @@ public class ValuationDomain extends BaseDomain {
 		_score=score;
 	}
 	
-	/*
+	
 	public void setAuction(AuctionDomain auction){
 		_auction=auction;
 		
-	}*/
+	}
 	
 	public void setVoter(UserDomain voter){
 		_voter=voter;

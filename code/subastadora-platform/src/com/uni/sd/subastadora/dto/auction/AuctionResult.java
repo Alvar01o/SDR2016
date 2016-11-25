@@ -13,11 +13,11 @@ public class AuctionResult extends BaseResult<AuctionDTO> {
 	private static final long serialVersionUID = 1L;
 
 	@XmlElement
-	public List<AuctionDTO> getCountries() {
+	public List<AuctionDTO> getAuctions() {
 		return getList();
 	}
 
-	public void setCountries(List<AuctionDTO> dtos) {
+	public void setAuctions(List<AuctionDTO> dtos) {
 		super.setList(dtos);
 	}
 }
