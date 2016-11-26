@@ -1,11 +1,13 @@
 package com.uni.sd.subastadora.dao.typeBid;
 
+
 import java.util.List;
 
 import com.uni.sd.subastadora.dao.base.IBaseDao;
-import com.uni.sd.subastadora.domain.auction.AuctionDomain;
+import com.uni.sd.subastadora.domain.typeBid.TypeBidDomain;
 
-public interface ITypeBidDao extends IBaseDao<AuctionDomain> {
+public interface ITypeBidDao extends IBaseDao<TypeBidDomain> {
 
-	public List<AuctionDomain>find(String textToFind);
+	public List<TypeBidDomain>find(String textToFind);
 }
+

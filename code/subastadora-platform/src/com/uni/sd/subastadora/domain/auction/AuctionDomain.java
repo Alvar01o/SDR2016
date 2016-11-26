@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.uni.sd.subastadora.domain.base.BaseDomain;
+import com.uni.sd.subastadora.domain.bid.BidDomain;
 import com.uni.sd.subastadora.domain.creditcard.CreditCardDomain;
 import com.uni.sd.subastadora.domain.product.ProductDomain;
 import com.uni.sd.subastadora.domain.user.UserDomain;
@@ -41,6 +42,12 @@ public class AuctionDomain extends BaseDomain {
 	
 	@OneToMany(mappedBy = "_auction")
 	private Set<ValuationDomain> _valuations = new HashSet<>();
+	
+	
+	@OneToMany(mappedBy = "_auction")
+	private Set<BidDomain> _bids = new HashSet<>();
+	
+	
 	
 	public Integer getId() {
 		return _id;
@@ -80,6 +87,14 @@ public class AuctionDomain extends BaseDomain {
 
 	public void setValuations(Set<ValuationDomain> valuations) {
 		this._valuations = valuations;
+	}
+	
+	public Set<BidDomain> getBids() {
+		return _bids;
+	}
+
+	public void setBids(Set<BidDomain> bids) {
+		this._bids = bids;
 	}
 	
 }

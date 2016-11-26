@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uni.sd.subastadora.dao.announcement.AnnouncementDaoImpl;
 import com.uni.sd.subastadora.dao.announcement.IAnnouncementDao;
+import com.uni.sd.subastadora.dao.product.IProductDao;
+import com.uni.sd.subastadora.dao.user.IUserDao;
 import com.uni.sd.subastadora.domain.announcement.AnnouncementDomain;
 import com.uni.sd.subastadora.dto.announcement.AnnouncementDTO;
 import com.uni.sd.subastadora.dto.announcement.AnnouncementResult;
@@ -19,6 +21,12 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementDTO, An
 		implements IAnnouncementService {
 	@Autowired
 	private IAnnouncementDao announcementDao;
+	
+	@Autowired
+	private IUserDao userDao;
+	
+	@Autowired
+	private IProductDao productDao;
 
 	@Override
 	@Transactional
@@ -66,6 +74,8 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementDTO, An
 	protected AnnouncementDTO convertDomainToDto(AnnouncementDomain domain) {
 		final AnnouncementDTO dto = new AnnouncementDTO();
 		dto.setId(domain.getId());
+		dto.setUserId(domain.getUser().getId());
+		dto.setProductId(domain.getProduct().getId());
 		return dto;
 	}
 
@@ -73,7 +83,8 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementDTO, An
 	protected AnnouncementDomain convertDtoToDomain(AnnouncementDTO dto) {
 		final AnnouncementDomain domain = new AnnouncementDomain();
 		domain.setId(dto.getId());
-		
+		domain.setProduct(productDao.getById(dto.getProductId()));
+		domain.setUser(userDao.getById(dto.getUserId()));
 		return domain;
 	}
 

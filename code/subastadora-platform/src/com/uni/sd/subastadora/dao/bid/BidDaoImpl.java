@@ -1,8 +1,6 @@
-package com.uni.sd.subastadora.dao.Bid;
+package com.uni.sd.subastadora.dao.bid;
 
 import java.util.List;
-
-
 
 
 
@@ -18,36 +16,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.uni.sd.subastadora.dao.base.BaseDaoImpl;
-import com.uni.sd.subastadora.domain.auction.AuctionDomain;
-
+import com.uni.sd.subastadora.domain.bid.BidDomain;
 
 @Repository
-public class BidDaoImp extends BaseDaoImpl<AuctionDomain> implements IBidDao {
+public class BidDaoImpl extends BaseDaoImpl<BidDomain> implements IBidDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public AuctionDomain save(AuctionDomain domain) {
+	public BidDomain save(BidDomain domain) {
 		sessionFactory.getCurrentSession().saveOrUpdate(domain);
 		return domain;
 	}
 
 	@Override
-	public AuctionDomain getById(Integer domainId) {
-		return (AuctionDomain) sessionFactory.getCurrentSession().get(AuctionDomain.class, domainId);
+	public BidDomain getById(Integer domainId) {
+		return (BidDomain) sessionFactory.getCurrentSession().get(BidDomain.class, domainId);
 	}
 
 	@Override
-	public List<AuctionDomain> findAll() {
-		final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AuctionDomain.class);
+	public List<BidDomain> findAll() {
+		final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(BidDomain.class);
 		return criteria.list();
 	}
 
 	
-	public List<AuctionDomain> find(String textToFind) {
+	public List<BidDomain> find(String textToFind) {
 
 		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria = session.createCriteria(AuctionDomain.class);
+		Criteria criteria = session.createCriteria(BidDomain.class);
 		Criterion nameCriterion =Restrictions.ilike("_name", textToFind);
 		Criterion idCriterion = null;
 		if (StringUtils.isNumeric(textToFind)) {
@@ -60,16 +57,16 @@ public class BidDaoImp extends BaseDaoImpl<AuctionDomain> implements IBidDao {
 			criteria.add(nameCriterion);
 		}
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-		List<AuctionDomain> countries = criteria.list();
-		return countries;
+		List<BidDomain> bids = criteria.list();
+		return bids;
 	}
 
-	public List<AuctionDomain> find2(String textToFind) {
+	public List<BidDomain> find2(String textToFind) {
 		Integer id = null;
 		if (StringUtils.isNumeric(textToFind)) {
 			id = Integer.valueOf(textToFind);
 		}
-		Query q = sessionFactory.getCurrentSession().createQuery("from AuctionDomain where _name like :parameter or _id=:id");
+		Query q = sessionFactory.getCurrentSession().createQuery("from BidDomain where _name like :parameter or _id=:id");
 		q.setParameter("parameter", "%" + textToFind + "%");
 		q.setParameter("id", id);
 		return q.list();

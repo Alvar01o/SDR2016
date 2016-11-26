@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import com.uni.sd.subastadora.domain.announcement.AnnouncementDomain;
 import com.uni.sd.subastadora.domain.auction.AuctionDomain;
 import com.uni.sd.subastadora.domain.base.BaseDomain;
+import com.uni.sd.subastadora.domain.bid.BidDomain;
 import com.uni.sd.subastadora.domain.creditcard.CreditCardDomain;
 import com.uni.sd.subastadora.domain.location.state.StateDomain;
 import com.uni.sd.subastadora.domain.product.ProductDomain;
@@ -68,10 +69,8 @@ public class UserDomain extends BaseDomain {
 	@OneToMany(mappedBy = "_winnerId")
 	private Set<AuctionDomain> _auctions = new HashSet<>();
 	
-	
-	
-	/*@OneToMany(mappedBy = "_user")
-	private Set<BindDomain> _binds = new HashSet<>();*/
+	@OneToMany(mappedBy = "_user")
+	private Set<BidDomain> _bids = new HashSet<>();
 	
 	public RoleDomain getRole() {
 			return _role;
@@ -184,9 +183,13 @@ public class UserDomain extends BaseDomain {
 	}
 	
 	
-	
-	
-	
+	public Set<BidDomain> getBids() {
+		return _bids;
+	}
+
+	public void setBids(Set<BidDomain> bids) {
+		this._bids = bids;
+	}
 	
 	
 	

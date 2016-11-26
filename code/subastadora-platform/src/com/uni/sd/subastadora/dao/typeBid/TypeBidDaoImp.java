@@ -3,9 +3,6 @@ package com.uni.sd.subastadora.dao.typeBid;
 import java.util.List;
 
 
-
-
-
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -18,36 +15,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.uni.sd.subastadora.dao.base.BaseDaoImpl;
-import com.uni.sd.subastadora.domain.auction.AuctionDomain;
+import com.uni.sd.subastadora.domain.typeBid.TypeBidDomain;
 
 
 @Repository
-public class TypeBidDaoImp extends BaseDaoImpl<AuctionDomain> implements ITypeBidDao {
+public class TypeBidDaoImp extends BaseDaoImpl<TypeBidDomain> implements ITypeBidDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public AuctionDomain save(AuctionDomain domain) {
+	public TypeBidDomain save(TypeBidDomain domain) {
 		sessionFactory.getCurrentSession().saveOrUpdate(domain);
 		return domain;
 	}
 
 	@Override
-	public AuctionDomain getById(Integer domainId) {
-		return (AuctionDomain) sessionFactory.getCurrentSession().get(AuctionDomain.class, domainId);
+	public TypeBidDomain getById(Integer domainId) {
+		return (TypeBidDomain) sessionFactory.getCurrentSession().get(TypeBidDomain.class, domainId);
 	}
 
 	@Override
-	public List<AuctionDomain> findAll() {
-		final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AuctionDomain.class);
+	public List<TypeBidDomain> findAll() {
+		final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TypeBidDomain.class);
 		return criteria.list();
 	}
 
 	
-	public List<AuctionDomain> find(String textToFind) {
+	public List<TypeBidDomain> find(String textToFind) {
 
 		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria = session.createCriteria(AuctionDomain.class);
+		Criteria criteria = session.createCriteria(TypeBidDomain.class);
 		Criterion nameCriterion =Restrictions.ilike("_name", textToFind);
 		Criterion idCriterion = null;
 		if (StringUtils.isNumeric(textToFind)) {
@@ -60,16 +57,16 @@ public class TypeBidDaoImp extends BaseDaoImpl<AuctionDomain> implements ITypeBi
 			criteria.add(nameCriterion);
 		}
 		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-		List<AuctionDomain> countries = criteria.list();
+		List<TypeBidDomain> countries = criteria.list();
 		return countries;
 	}
 
-	public List<AuctionDomain> find2(String textToFind) {
+	public List<TypeBidDomain> find2(String textToFind) {
 		Integer id = null;
 		if (StringUtils.isNumeric(textToFind)) {
 			id = Integer.valueOf(textToFind);
 		}
-		Query q = sessionFactory.getCurrentSession().createQuery("from AuctionDomain where _name like :parameter or _id=:id");
+		Query q = sessionFactory.getCurrentSession().createQuery("from TypeBidDomain where _name like :parameter or _id=:id");
 		q.setParameter("parameter", "%" + textToFind + "%");
 		q.setParameter("id", id);
 		return q.list();

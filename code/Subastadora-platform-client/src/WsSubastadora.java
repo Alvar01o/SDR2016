@@ -3,11 +3,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import announcement.AnnouncementManager;
 import auction.AuctionManager;
+import bid.BidManager;
 import product.ProductManager;
 import creditCard.CreditCardManager;
 import user.UserManager;
 import valuation.ValuationManager;
+
 import com.uni.sd.subastadora.util.CategoryEnum;
 
 
@@ -20,6 +23,7 @@ public class WsSubastadora {
 		auctionManager();
 		creditCardManager();
 		valuationManager();
+		bidManager();
 		
 		
 	}
@@ -72,4 +76,26 @@ public class WsSubastadora {
 		s.getAllValuations();
 		
 	}
+	
+	
+	public static void bidManager(){
+
+		System.out.println("\n\n Bids \n");
+		BidManager s = new BidManager();
+		s.addBid(1000, 1, 2, 1);
+		s.addBid(2000, 2, 1, 2);
+		s.getAllBids();
+
+		
+	}
+	
+	public static void announcementManager(){
+		System.out.println("\n\n Announcements \n");
+		AnnouncementManager s = new AnnouncementManager();
+		s.addAnnouncement(1,2);
+		s.addAnnouncement(2,1);
+		s.getAllAnnouncements();
+		
+	}
+
 }

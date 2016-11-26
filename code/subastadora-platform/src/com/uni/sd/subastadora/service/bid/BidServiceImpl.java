@@ -6,85 +6,93 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.uni.sd.subastadora.dao.auction.AuctionDaoImp;
-import com.uni.sd.subastadora.dao.auction.IAuctionDao;
-import com.uni.sd.subastadora.dao.user.*;
-import com.uni.sd.subastadora.domain.auction.AuctionDomain;
-import com.uni.sd.subastadora.dto.auction.AuctionDTO;
 
-import com.uni.sd.subastadora.dto.auction.AuctionResult;
+import com.uni.sd.subastadora.dao.auction.IAuctionDao;
+import com.uni.sd.subastadora.dao.bid.BidDaoImpl;
+import com.uni.sd.subastadora.dao.bid.IBidDao;
+import com.uni.sd.subastadora.dao.typeBid.ITypeBidDao;
+import com.uni.sd.subastadora.dao.user.*;
+import com.uni.sd.subastadora.domain.bid.BidDomain;
+import com.uni.sd.subastadora.dto.bid.BidDTO;
+import com.uni.sd.subastadora.dto.bid.BidResult;
 import com.uni.sd.subastadora.service.base.BaseServiceImpl;
 
 @Service
-public class BidServiceImpl extends BaseServiceImpl<AuctionDTO, AuctionDomain, AuctionDaoImp, AuctionResult>
+public class BidServiceImpl extends BaseServiceImpl<BidDTO, BidDomain, BidDaoImpl, BidResult>
 		implements IBidService {
 	@Autowired
-	private IAuctionDao auctionDao;
+	private IBidDao bidDao;
 
 	@Autowired
 	private IUserDao userDao;
+	
+	@Autowired
+	private IAuctionDao auctionDao;
+	
+	@Autowired
+	private ITypeBidDao typeBidDao;
 
 	@Override
 	@Transactional
-	public AuctionDTO save(AuctionDTO dto) {
-		final AuctionDomain domain = convertDtoToDomain(dto);
-		final AuctionDomain auctionDomain = auctionDao.save(domain);
-		return convertDomainToDto(auctionDomain);
+	public BidDTO save(BidDTO dto) {
+		final BidDomain domain = convertDtoToDomain(dto);
+		final BidDomain bidDomain = bidDao.save(domain);
+		return convertDomainToDto(bidDomain);
 	}
 
 	@Override
 	@Transactional
-	public AuctionDTO getById(Integer id) {
-		final AuctionDomain domain = auctionDao.getById(id);
-		final AuctionDTO dto = convertDomainToDto(domain);
+	public BidDTO getById(Integer id) {
+		final BidDomain domain = bidDao.getById(id);
+		final BidDTO dto = convertDomainToDto(domain);
 		return dto;
 	}
 
 	@Override
 	@Transactional
-	public AuctionResult getAll() {
-		final List<AuctionDTO> countries = new ArrayList<>();
-		for (AuctionDomain domain : auctionDao.findAll()) {
-			final AuctionDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+	public BidResult getAll() {
+		final List<BidDTO> bids = new ArrayList<>();
+		for (BidDomain domain : bidDao.findAll()) {
+			final BidDTO dto = convertDomainToDto(domain);
+			bids.add(dto);
 		}
-		final AuctionResult auctionResult = new AuctionResult();
-		auctionResult.setAuctions(countries);
-		return auctionResult;
+		final BidResult bidResult = new BidResult();
+		bidResult.setBids(bids);
+		return bidResult;
 	}
 
 	@Override
 	@Transactional
-	public AuctionResult find(String textToFind) {
-		final List<AuctionDTO> countries = new ArrayList<>();
-		for (AuctionDomain domain : auctionDao.find(textToFind)) {
-			final AuctionDTO dto = convertDomainToDto(domain);
-			countries.add(dto);
+	public BidResult find(String textToFind) {
+		final List<BidDTO> bids = new ArrayList<>();
+		for (BidDomain domain : bidDao.find(textToFind)) {
+			final BidDTO dto = convertDomainToDto(domain);
+			bids.add(dto);
 		}
-		final AuctionResult auctionResult = new AuctionResult();
-		auctionResult.setAuctions(countries);
-		return auctionResult;
+		final BidResult bidResult = new BidResult();
+		bidResult.setBids(bids);
+		return bidResult;
 	}
 
 	@Override
-	protected AuctionDTO convertDomainToDto(AuctionDomain domain) {
-		final AuctionDTO dto = new AuctionDTO();
+	protected BidDTO convertDomainToDto(BidDomain domain) {
+		final BidDTO dto = new BidDTO();
 		dto.setId(domain.getId());
-		dto.setTime(domain.getTime());
-		dto.setWinnerId(domain.getWinner().getId());
+		dto.setAmount(domain.getAmount());;
+		dto.setUserId(domain.getUser().getId());
+		dto.setAuctionId(domain.getAuction().getId());
+		dto.setTypeBidId(domain.getTypeBid().getId());
 		return dto;
 	}
 
 	@Override
-	protected AuctionDomain convertDtoToDomain(AuctionDTO dto) {
-		final AuctionDomain domain = new AuctionDomain();
+	protected BidDomain convertDtoToDomain(BidDTO dto) {
+		final BidDomain domain = new BidDomain();
 		domain.setId(dto.getId());
-		domain.setTime(dto.getTime());
-		try {
-			if (null != dto.getWinnerId()) domain.setWinner(userDao.getById(dto.getWinnerId()) );
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		domain.setAmount(dto.getAmount());;
+		domain.setUser(userDao.getById(dto.getUserId()));
+		domain.setAuction(auctionDao.getById(dto.getAuctionId()));
+		domain.setTypeBid(typeBidDao.getById(dto.getTypeBidId()));
 		return domain;
 	}
 
