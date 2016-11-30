@@ -5,8 +5,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
-import com.uni.sd.subastadora.dto.role.RoleDTO;
 import com.uni.sd.subastadora.dto.role.RoleResult;
+import com.uni.sd.subastadora.dto.role.RoleDTO;
 import com.uni.sd.subastadora.rest.base.BaseResourceImpl;
 
 @Repository("roleResource")
@@ -39,5 +39,11 @@ public class RoleResourceImpl extends BaseResourceImpl<RoleDTO> implements
 			//		"role_" + role.getId(), role);
 		//}
 		return roles;
+	}
+	
+	@Override
+	public RoleResult find(String textToFind) {
+		final RoleResult result = findWR(textToFind).get(RoleResult.class);
+		return result;
 	}
 }

@@ -1,6 +1,7 @@
-package com.uni.sd.subastadora.dao.creditcard;
+package com.uni.sd.subastadora.dao.creditCard;
 
 import java.util.List;
+
 
 
 
@@ -17,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.uni.sd.subastadora.dao.base.BaseDaoImpl;
-import com.uni.sd.subastadora.domain.creditcard.CreditCardDomain;
+import com.uni.sd.subastadora.domain.creditCard.CreditCardDomain;
 
 @Repository
 public class CreditCardDaoImpl extends BaseDaoImpl<CreditCardDomain> implements ICreditCardDao {

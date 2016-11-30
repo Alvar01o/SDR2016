@@ -54,5 +54,9 @@ public abstract class BaseResourceImpl<DTO extends BaseDTO> implements
 	public DTO getById(Integer id) {
 		return getWebResource().path("/" + id).get(getDtoClass());
 	}
+	
+	public WebResource findWR(String textToFind) {
+		return getWebResource().path("/search/" + textToFind);
+	}
 
 }

@@ -68,7 +68,7 @@ public class ProductB extends BaseBean {
 		return _user;
 	}
 
-	public void setB(UserB user) {
+	public void setUser(UserB user) {
 		_user = user;
 	}
 

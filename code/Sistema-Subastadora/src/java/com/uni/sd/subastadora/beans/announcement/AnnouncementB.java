@@ -1,20 +1,13 @@
-package com.uni.sd.subastadora.beans.Announcement;
+package com.uni.sd.subastadora.beans.announcement;
 
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang.StringUtils;
 
 import com.uni.sd.subastadora.beans.base.BaseBean;
 import com.uni.sd.subastadora.beans.product.ProductB;
 import com.uni.sd.subastadora.beans.user.UserB;
-import com.uni.sd.subastadora.domain.product.ProductDomain;
-import com.uni.sd.subastadora.domain.user.UserDomain;
 
 public class AnnouncementB extends BaseBean {
 

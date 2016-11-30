@@ -6,4 +6,5 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 
 public interface IRoleResource extends IBaseResource<RoleDTO> {
 	public RoleResult getAll();
+	public RoleResult find(String textToFind);
 }
