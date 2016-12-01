@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uni.sd.subastadora.beans.creditCard.CreditCardB;
-import com.uni.sd.subastadora.dto.creditCard.CreditCardDTO;
-import com.uni.sd.subastadora.dto.creditCard.CreditCardResult;
+import com.uni.sd.subastadora.dto.creditcard.CreditCardDTO;
+import com.uni.sd.subastadora.dto.creditcard.CreditCardResult;
 import com.uni.sd.subastadora.rest.creditCard.ICreditCardResource;
 import com.uni.sd.subastadora.rest.creditCard.CreditCardResourceImpl;
 import com.uni.sd.subastadora.service.user.IUserService;
@@ -90,5 +90,20 @@ public class CreditCardServiceImpl extends BaseServiceImpl<CreditCardB, CreditCa
 		}
 		return creditCards;
 	}
+
+	@Override
+	public List<CreditCardB> find (String textToFind, int maxItems, int page) {
+		final CreditCardResult result = _creditCardResource.find(textToFind, maxItems, page);
+		final List<CreditCardDTO> rList = null == result.getCreditCards() ? new ArrayList<CreditCardDTO>()
+				: result.getCreditCards();
+
+		final List<CreditCardB> creditCards = new ArrayList<CreditCardB>();
+		for (CreditCardDTO dto : rList) {
+			final CreditCardB bean = convertDtoToBean(dto);
+			creditCards.add(bean);
+		}
+		return creditCards;
+	}
+
 
 }

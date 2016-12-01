@@ -100,4 +100,18 @@ public class ValuationServiceImpl extends BaseServiceImpl<ValuationB, ValuationD
 		return bids;
 	}
 
+	@Override
+	public List<ValuationB> find (String textToFind, int maxItems, int page) {
+		final ValuationResult result = _valuationResource.find(textToFind, maxItems, page);
+		final List<ValuationDTO> rList = null == result.getValuations() ? new ArrayList<ValuationDTO>()
+				: result.getValuations();
+
+		final List<ValuationB> valuations = new ArrayList<ValuationB>();
+		for (ValuationDTO dto : rList) {
+			final ValuationB bean = convertDtoToBean(dto);
+			valuations.add(bean);
+		}
+		return valuations;
+	}
+
 }

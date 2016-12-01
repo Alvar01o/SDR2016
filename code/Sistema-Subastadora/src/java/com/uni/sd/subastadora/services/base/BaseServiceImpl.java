@@ -13,7 +13,5 @@ public abstract class BaseServiceImpl<BEAN extends BaseBean, DTO extends BaseDTO
 	protected abstract BEAN convertDtoToBean(DTO dto);
 
 	protected abstract DTO convertBeanToDto(BEAN bean);
-	
-	
 
 }

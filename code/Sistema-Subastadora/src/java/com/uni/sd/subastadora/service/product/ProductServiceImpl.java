@@ -98,4 +98,18 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductB, ProductDTO>
 		return bids;
 	}
 
+	@Override
+	public List<ProductB> find (String textToFind, int maxItems, int page) {
+		final ProductResult result = _productResource.find(textToFind, maxItems, page);
+		final List<ProductDTO> rList = null == result.getProducts() ? new ArrayList<ProductDTO>()
+				: result.getProducts();
+
+		final List<ProductB> products = new ArrayList<ProductB>();
+		for (ProductDTO dto : rList) {
+			final ProductB bean = convertDtoToBean(dto);
+			products.add(bean);
+		}
+		return products;
+	}
+
 }

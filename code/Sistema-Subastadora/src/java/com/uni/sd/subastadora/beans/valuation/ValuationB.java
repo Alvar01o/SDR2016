@@ -68,6 +68,10 @@ public class ValuationB extends BaseBean {
 		if (!StringUtils.isBlank(params.get("id"))) {
 			setId(Integer.valueOf(params.get("id")));
 		}
+		 if(null != params.get("score")){
+             setScore(Integer.parseInt(params.get("escore")));
+         }
+       
 		
 	}
 

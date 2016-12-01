@@ -102,4 +102,19 @@ public class BidServiceImpl extends BaseServiceImpl<BidB, BidDTO>
 		return bids;
 	}
 
+	@Override
+	public List<BidB> find (String textToFind, int maxItems, int page) {
+		final BidResult result = _bidResource.find(textToFind, maxItems, page);
+		final List<BidDTO> rList = null == result.getBids() ? new ArrayList<BidDTO>()
+				: result.getBids();
+
+		final List<BidB> bids = new ArrayList<BidB>();
+		for (BidDTO dto : rList) {
+			final BidB bean = convertDtoToBean(dto);
+			bids.add(bean);
+		}
+		return bids;
+	}
+
+
 }

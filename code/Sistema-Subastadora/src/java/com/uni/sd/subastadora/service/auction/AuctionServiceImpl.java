@@ -93,4 +93,18 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionB, AuctionDTO>
 		return auctions;
 	}
 
+	@Override
+	public List<AuctionB> find (String textToFind, int maxItems, int page) {
+		final AuctionResult result = _auctionResource.find(textToFind, maxItems, page);
+		final List<AuctionDTO> rList = null == result.getAuctions() ? new ArrayList<AuctionDTO>()
+				: result.getAuctions();
+
+		final List<AuctionB> auctions = new ArrayList<AuctionB>();
+		for (AuctionDTO dto : rList) {
+			final AuctionB bean = convertDtoToBean(dto);
+			auctions.add(bean);
+		}
+		return auctions;
+	}
+
 }

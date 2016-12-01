@@ -10,19 +10,21 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
 @Repository
-public abstract class BaseResourceImpl<DTO extends BaseDTO> implements
-		IBaseResource<DTO> {
+
+public abstract class BaseResourceImpl<DTO extends BaseDTO> implements IBaseResource<DTO> {
 	private final String _resourcePath;
 	private final Class<DTO> _dtoClass;
 	private final WebResource _webResource;
 
-	//protected static final String CACHE_REGION = "isp-client-web-cache";
-	private static final String BASE_URL = "http://localhost:8080/subastadora-platform/rest";
 
-	@Autowired
+	protected static final String CACHE_REGION = "subastadora-client-web-cache";
+	private static final String BASE_URL = "http://localhost:8080/subastadora-platform/rest";
 	
-	//@Qualifier("grailsCacheManager")
-	//private CacheManager _cacheManager;
+	@Autowired
+	@Qualifier("grailsCacheManager")
+	private CacheManager _cacheManager;
+	
+	@Autowired
 
 	public BaseResourceImpl(Class<DTO> dtoClass, String resourcePath) {
 		_dtoClass = dtoClass;
@@ -40,11 +42,12 @@ public abstract class BaseResourceImpl<DTO extends BaseDTO> implements
 	protected Class<DTO> getDtoClass() {
 		return _dtoClass;
 	}
+	protected CacheManager getCacheManager() {
+		return _cacheManager;
+	}
 
-	//protected CacheManager getCacheManager() {
-	//	return _cacheManager;
-	//}
-
+	
+	
 	@Override
 	public DTO save(DTO dto) {
 		return getWebResource().entity(dto).post(getDtoClass());
@@ -55,8 +58,14 @@ public abstract class BaseResourceImpl<DTO extends BaseDTO> implements
 		return getWebResource().path("/" + id).get(getDtoClass());
 	}
 	
-	public WebResource findWR(String textToFind) {
-		return getWebResource().path("/search/" + textToFind);
+	public WebResource findWR(String textToFind, int maxItems, int page) {
+		if (null == textToFind){
+			
+			return getWebResource().path("/search/" + maxItems + "/" + page);
+		}else{
+			
+			return getWebResource().path("/search/" + maxItems + "/" + page + "/" + textToFind);
+		}
 	}
 
 }

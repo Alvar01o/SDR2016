@@ -7,6 +7,6 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 public interface IAnnouncementResource extends IBaseResource<AnnouncementDTO> {
 
 	public AnnouncementResult getAll();
+	public AnnouncementResult find(String textToFind, int maxItems, int page);
 	public AnnouncementResult find(String textToFind);
-
 }

@@ -1,11 +1,13 @@
 package com.uni.sd.subastadora.beans.creditCard;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
 
-import org.apache.commons.lang.StringUtils;
 
+
+import org.apache.commons.lang.StringUtils;
 import com.uni.sd.subastadora.beans.base.BaseBean;
 import com.uni.sd.subastadora.beans.user.UserB;
 
@@ -50,6 +52,18 @@ public class CreditCardB extends BaseBean {
 			setId(Integer.valueOf(params.get("id")));
 		}
 		setCardNumber(params.get("name"));
-	}
+	
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			if(null != params.get("expiration")){
+				setExpiration(formato.parse(params.get("expiration")));
+			}
+
+		} catch (java.text.ParseException e) {
+				e.printStackTrace();
+
+			}
+		
+		}
 
 }

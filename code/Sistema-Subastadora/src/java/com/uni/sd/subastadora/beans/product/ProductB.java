@@ -68,7 +68,7 @@ public class ProductB extends BaseBean {
 		return _user;
 	}
 
-	public void setUser(UserB user) {
+	public void setB(UserB user) {
 		_user = user;
 	}
 
@@ -79,6 +79,18 @@ public class ProductB extends BaseBean {
 			setId(Integer.valueOf(params.get("id")));
 		}
 		setName(params.get("name"));
+		this.setDescription("description");
+		this.setName("name");
+		this.setShippingInfor("shippingInfor");
+		if(null != params.get("price")){
+             setPrice(Integer.parseInt(params.get("price")));
+        }
+     
+		if (!StringUtils.isBlank(params.get("status"))) {
+			setCategory(CategoryEnum.valueOf(params.get("status")));
+
+		}
 	}
+	
 
 }

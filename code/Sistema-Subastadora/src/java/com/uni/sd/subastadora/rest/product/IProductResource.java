@@ -7,6 +7,7 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 public interface IProductResource extends IBaseResource<ProductDTO> {
 
 	public ProductResult getAll();
+	public ProductResult find(String textToFind, int maxItems, int page);
 	public ProductResult find(String textToFind);
-
 }
+

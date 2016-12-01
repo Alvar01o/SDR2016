@@ -92,4 +92,18 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementB, Anno
 		return announcements;
 	}
 
+	@Override
+	public List<AnnouncementB> find (String textToFind, int maxItems, int page) {
+		final AnnouncementResult result = _announcementResource.find(textToFind, maxItems, page);
+		final List<AnnouncementDTO> rList = null == result.getAnnouncements() ? new ArrayList<AnnouncementDTO>()
+				: result.getAnnouncements();
+
+		final List<AnnouncementB> announcements = new ArrayList<AnnouncementB>();
+		for (AnnouncementDTO dto : rList) {
+			final AnnouncementB bean = convertDtoToBean(dto);
+			announcements.add(bean);
+		}
+		return announcements;
+	}
+
 }

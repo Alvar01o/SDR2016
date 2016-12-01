@@ -7,6 +7,6 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 public interface IValuationResource extends IBaseResource<ValuationDTO> {
 
 	public ValuationResult getAll();
+	public ValuationResult find(String textToFind, int maxItems, int page);
 	public ValuationResult find(String textToFind);
-
 }

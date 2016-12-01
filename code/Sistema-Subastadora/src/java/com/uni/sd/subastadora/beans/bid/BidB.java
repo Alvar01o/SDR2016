@@ -1,6 +1,7 @@
 package com.uni.sd.subastadora.beans.bid;
 
 import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 
 import com.uni.sd.subastadora.beans.auction.AuctionB;
@@ -63,6 +64,10 @@ public class BidB extends BaseBean {
 		if (!StringUtils.isBlank(params.get("id"))) {
 			setId(Integer.valueOf(params.get("id")));
 		}
+		
+		if(null != params.get("amount")){
+            setAmount(Integer.parseInt(params.get("amount")));
+       }
 		
 	}
 

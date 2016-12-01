@@ -92,4 +92,19 @@ public class TypeBidServiceImpl extends BaseServiceImpl<TypeBidB, TypeBidDTO>
 		return bids;
 	}
 
+	@Override
+	public List<TypeBidB> find (String textToFind, int maxItems, int page) {
+		final TypeBidResult result = _typeBidResource.find(textToFind, maxItems, page);
+		final List<TypeBidDTO> rList = null == result.getTypeBids() ? new ArrayList<TypeBidDTO>()
+				: result.getTypeBids();
+
+		final List<TypeBidB> typeBids = new ArrayList<TypeBidB>();
+		for (TypeBidDTO dto : rList) {
+			final TypeBidB bean = convertDtoToBean(dto);
+			typeBids.add(bean);
+		}
+		return typeBids;
+	}
+
+
 }

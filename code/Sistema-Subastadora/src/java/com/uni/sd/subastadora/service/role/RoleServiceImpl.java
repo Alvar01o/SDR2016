@@ -7,19 +7,21 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uni.sd.subastadora.beans.creditCard.CreditCardB;
 import com.uni.sd.subastadora.beans.role.RoleB;
-import com.uni.sd.subastadora.dto.creditCard.CreditCardDTO;
-import com.uni.sd.subastadora.dto.creditCard.CreditCardResult;
 import com.uni.sd.subastadora.dto.role.RoleDTO;
 import com.uni.sd.subastadora.dto.role.RoleResult;
 import com.uni.sd.subastadora.rest.role.IRoleResource;
 import com.uni.sd.subastadora.rest.role.RoleResourceImpl;
 import com.uni.sd.subastadora.services.base.BaseServiceImpl;
+import com.uni.sd.subastadora.service.user.IUserService;
 
 @Service("roleService")
 public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		implements IRoleService {
+	
+	@Autowired
+	private IUserService userService;
+	
 	@Autowired
 	private IRoleResource _roleResource=new RoleResourceImpl();
 	
@@ -28,10 +30,10 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 	}
 
 	@Override
-	public RoleB save(RoleB bean) {
+	public	RoleB save(RoleB bean) {
 		final RoleDTO dto = convertBeanToDto(bean);
-		final RoleDTO roleDTO = _roleResource.save(dto);
-		return convertDtoToBean(roleDTO);
+		final RoleDTO productDTO = _roleResource.save(dto);
+		return convertDtoToBean(productDTO);
 	}
 
 	@Override
@@ -58,9 +60,12 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 	protected RoleB convertDtoToBean(RoleDTO dto) {
 		final Map<String, String> params = new HashMap<String, String>();
 		params.put("id", String.valueOf(dto.getId()));
-		params.put("name", dto.getName());
-		final RoleB roleB = new RoleB(params);
-		return roleB;
+	
+		
+		final RoleB productB = new RoleB(params);
+		//productB.setUser(userService.getById(dto.getUserId()));
+		
+		return productB;
 	}
 
 	@Override
@@ -68,11 +73,28 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		final RoleDTO dto = new RoleDTO();
 		dto.setId(bean.getId());
 		dto.setName(bean.getName());
+	
+
 		return dto;
 	}
+	
 	@Override						
 	public List<RoleB> find(String textToFind) {		//int maxItems, int page
 		final RoleResult result = _roleResource.find(textToFind);
+		final List<RoleDTO> rList = null == result.getRoles() ? new ArrayList<RoleDTO>()
+				: result.getRoles();
+
+		final List<RoleB> bids = new ArrayList<RoleB>();
+		for (RoleDTO dto : rList) {
+			final RoleB bean = convertDtoToBean(dto);
+			bids.add(bean);
+		}
+		return bids;
+	}
+
+	@Override
+	public List<RoleB> find (String textToFind, int maxItems, int page) {
+		final RoleResult result = _roleResource.find(textToFind, maxItems, page);
 		final List<RoleDTO> rList = null == result.getRoles() ? new ArrayList<RoleDTO>()
 				: result.getRoles();
 
@@ -83,5 +105,6 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		}
 		return roles;
 	}
+
 
 }

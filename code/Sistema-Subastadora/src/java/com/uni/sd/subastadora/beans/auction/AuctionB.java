@@ -1,5 +1,6 @@
 package com.uni.sd.subastadora.beans.auction;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
@@ -61,6 +62,17 @@ public class AuctionB extends BaseBean {
 		if (!StringUtils.isBlank(params.get("id"))) {
 			setId(Integer.valueOf(params.get("id")));
 		}
+		
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			if(null != params.get("time")){
+				setTime(formato.parse(params.get("time")));
+			}
+
+		} catch (java.text.ParseException e) {
+				e.printStackTrace();
+
+			}
 		
 	}
 

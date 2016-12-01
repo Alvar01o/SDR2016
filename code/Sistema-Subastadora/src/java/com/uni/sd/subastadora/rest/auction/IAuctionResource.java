@@ -7,6 +7,7 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 public interface IAuctionResource extends IBaseResource<AuctionDTO> {
 
 	public AuctionResult getAll();
+	public AuctionResult find(String textToFind, int maxItems, int page);
 	public AuctionResult find(String textToFind);
-
 }
+

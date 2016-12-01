@@ -7,6 +7,7 @@ import com.uni.sd.subastadora.rest.base.IBaseResource;
 public interface IUserResource extends IBaseResource<UserDTO> {
 
 	public UserResult getAll();
+	public UserResult find(String textToFind, int maxItems, int page);
 	public UserResult find(String textToFind);
-
 }
+
