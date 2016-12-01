@@ -1,4 +1,4 @@
-package com.uni.sd.subastadora.dto.creditCard;
+package com.uni.sd.subastadora.dto.creditcard;
 
 import java.util.Date;
 

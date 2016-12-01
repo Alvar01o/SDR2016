@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 import com.uni.sd.subastadora.domain.base.BaseDomain;
 import com.uni.sd.subastadora.domain.bid.BidDomain;
-import com.uni.sd.subastadora.domain.creditCard.CreditCardDomain;
+import com.uni.sd.subastadora.domain.creditcard.CreditCardDomain;
 import com.uni.sd.subastadora.domain.product.ProductDomain;
 import com.uni.sd.subastadora.domain.user.UserDomain;
 import com.uni.sd.subastadora.domain.valuation.ValuationDomain;

@@ -1,5 +1,5 @@
 package com.uni.sd.subastadora.resource;
-/*
+
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -48,4 +48,3 @@ public class CreditCardResource {
 		return creditCardService.save(creditCard);
 	}
 }
-*/
