@@ -18,25 +18,25 @@ public class AnnouncementResourceImpl extends BaseResourceImpl<AnnouncementDTO> 
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'announcements'")
-	@CachePut(value = CACHE_REGION, key = "'announcement_' + #announcement.id", condition = "#announcement.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'announcements'")
+	//@CachePut(value = CACHE_REGION, key = "'announcement_' + #announcement.id", condition = "#announcement.id!=null")
 	public AnnouncementDTO save(AnnouncementDTO announcement) {
 		AnnouncementDTO newDto = super.save(announcement);
-		if (null == announcement.getId()) {
+		/*if (null == announcement.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"announcement_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'announcement_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'announcement_' + #id")
 	public AnnouncementDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'announcements'")
+	//@Cacheable(value = CACHE_REGION, key = "'announcements'")
 	public AnnouncementResult getAll() {
 		
 		final AnnouncementResult result = getWebResource().get(AnnouncementResult.class);

@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="template">
-		<g:set var="entityName" value="${message(code: 'laboratory.label', default: 'Laboratory')}" />
+		<g:set var="entityName" value="${message(code: 'role.label', default: 'Role')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>

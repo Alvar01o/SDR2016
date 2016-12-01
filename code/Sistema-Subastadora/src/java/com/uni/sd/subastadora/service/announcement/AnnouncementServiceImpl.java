@@ -78,6 +78,7 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementB, Anno
 		return dto;
 	}
 	
+	
 	@Override						
 	public List<AnnouncementB> find(String textToFind) {		//int maxItems, int page
 		final AnnouncementResult result = _announcementResource.find(textToFind);
@@ -91,7 +92,7 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementB, Anno
 		}
 		return announcements;
 	}
-
+	
 	@Override
 	public List<AnnouncementB> find (String textToFind, int maxItems, int page) {
 		final AnnouncementResult result = _announcementResource.find(textToFind, maxItems, page);
@@ -105,5 +106,9 @@ public class AnnouncementServiceImpl extends BaseServiceImpl<AnnouncementB, Anno
 		}
 		return announcements;
 	}
+	
+	
+
+	
 
 }

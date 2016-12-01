@@ -22,6 +22,7 @@ public class AnnouncementB extends BaseBean {
 	private UserB _user;
 	private ProductB _product;
 
+	
 	public AnnouncementB(Map<String, String> params) {
 		super(params);
 	}

@@ -18,25 +18,25 @@ public class CreditCardResourceImpl extends BaseResourceImpl<CreditCardDTO> impl
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'creditCards'")
-	@CachePut(value = CACHE_REGION, key = "'creditCard_' + #creditCard.id", condition = "#creditCard.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'creditCards'")
+	//@CachePut(value = CACHE_REGION, key = "'creditCard_' + #creditCard.id", condition = "#creditCard.id!=null")
 	public CreditCardDTO save(CreditCardDTO creditCard) {
 		CreditCardDTO newDto = super.save(creditCard);
-		if (null == creditCard.getId()) {
+		/*if (null == creditCard.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"creditCard_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'creditCard_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'creditCard_' + #id")
 	public CreditCardDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'creditCards'")
+	//@Cacheable(value = CACHE_REGION, key = "'creditCards'")
 	public CreditCardResult getAll() {
 		
 		final CreditCardResult result = getWebResource().get(CreditCardResult.class);

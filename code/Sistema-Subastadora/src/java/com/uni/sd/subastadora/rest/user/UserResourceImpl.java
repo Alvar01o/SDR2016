@@ -18,25 +18,25 @@ public class UserResourceImpl extends BaseResourceImpl<UserDTO> implements
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'users'")
-	@CachePut(value = CACHE_REGION, key = "'user_' + #user.id", condition = "#user.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'users'")
+	//@CachePut(value = CACHE_REGION, key = "'user_' + #user.id", condition = "#user.id!=null")
 	public UserDTO save(UserDTO user) {
 		UserDTO newDto = super.save(user);
-		if (null == user.getId()) {
+		/*if (null == user.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"user_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'user_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'user_' + #id")
 	public UserDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'users'")
+	//@Cacheable(value = CACHE_REGION, key = "'users'")
 	public UserResult getAll() {
 		
 		final UserResult result = getWebResource().get(UserResult.class);

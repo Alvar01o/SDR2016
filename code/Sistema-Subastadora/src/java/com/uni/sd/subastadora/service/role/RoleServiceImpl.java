@@ -53,6 +53,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 	@Override
 	public RoleB getById(Integer id) {
 		final RoleDTO dto = _roleResource.getById(id);
+		
 		return convertDtoToBean(dto);
 	}
 
@@ -60,7 +61,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 	protected RoleB convertDtoToBean(RoleDTO dto) {
 		final Map<String, String> params = new HashMap<String, String>();
 		params.put("id", String.valueOf(dto.getId()));
-	
+		params.put("name", dto.getName());
 		
 		final RoleB productB = new RoleB(params);
 		//productB.setUser(userService.getById(dto.getUserId()));
@@ -78,6 +79,20 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		return dto;
 	}
 	
+	@Override
+	public List<RoleB> find (String textToFind, int maxItems, int page) {
+		final RoleResult result = _roleResource.find(textToFind, maxItems, page);
+		final List<RoleDTO> rList = null == result.getRoles() ? new ArrayList<RoleDTO>()
+				: result.getRoles();
+
+		final List<RoleB> roles = new ArrayList<RoleB>();
+		for (RoleDTO dto : rList) {
+			final RoleB bean = convertDtoToBean(dto);
+			roles.add(bean);
+		}
+		return roles;
+	}
+	
 	@Override						
 	public List<RoleB> find(String textToFind) {		//int maxItems, int page
 		final RoleResult result = _roleResource.find(textToFind);
@@ -92,19 +107,8 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		return bids;
 	}
 
-	@Override
-	public List<RoleB> find (String textToFind, int maxItems, int page) {
-		final RoleResult result = _roleResource.find(textToFind, maxItems, page);
-		final List<RoleDTO> rList = null == result.getRoles() ? new ArrayList<RoleDTO>()
-				: result.getRoles();
-
-		final List<RoleB> roles = new ArrayList<RoleB>();
-		for (RoleDTO dto : rList) {
-			final RoleB bean = convertDtoToBean(dto);
-			roles.add(bean);
-		}
-		return roles;
-	}
+	
 
 
 }
+

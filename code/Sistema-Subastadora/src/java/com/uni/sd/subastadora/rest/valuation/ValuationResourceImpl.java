@@ -18,25 +18,25 @@ public class ValuationResourceImpl extends BaseResourceImpl<ValuationDTO> implem
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'valuations'")
-	@CachePut(value = CACHE_REGION, key = "'valuation_' + #valuation.id", condition = "#valuation.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'valuations'")
+	//@CachePut(value = CACHE_REGION, key = "'valuation_' + #valuation.id", condition = "#valuation.id!=null")
 	public ValuationDTO save(ValuationDTO valuation) {
 		ValuationDTO newDto = super.save(valuation);
-		if (null == valuation.getId()) {
+		/*if (null == valuation.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"valuation_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'valuation_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'valuation_' + #id")
 	public ValuationDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'valuations'")
+	//@Cacheable(value = CACHE_REGION, key = "'valuations'")
 	public ValuationResult getAll() {
 		
 		final ValuationResult result = getWebResource().get(ValuationResult.class);

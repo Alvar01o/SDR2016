@@ -60,6 +60,7 @@ public class TypeBidServiceImpl extends BaseServiceImpl<TypeBidB, TypeBidDTO>
 	protected TypeBidB convertDtoToBean(TypeBidDTO dto) {
 		final Map<String, String> params = new HashMap<String, String>();
 		params.put("id", String.valueOf(dto.getId()));
+		params.put("name", dto.getName());
 	
 		
 		final TypeBidB productB = new TypeBidB(params);
@@ -78,20 +79,6 @@ public class TypeBidServiceImpl extends BaseServiceImpl<TypeBidB, TypeBidDTO>
 		return dto;
 	}
 	
-	@Override						
-	public List<TypeBidB> find(String textToFind) {		//int maxItems, int page
-		final TypeBidResult result = _typeBidResource.find(textToFind);
-		final List<TypeBidDTO> rList = null == result.getTypeBids() ? new ArrayList<TypeBidDTO>()
-				: result.getTypeBids();
-
-		final List<TypeBidB> bids = new ArrayList<TypeBidB>();
-		for (TypeBidDTO dto : rList) {
-			final TypeBidB bean = convertDtoToBean(dto);
-			bids.add(bean);
-		}
-		return bids;
-	}
-
 	@Override
 	public List<TypeBidB> find (String textToFind, int maxItems, int page) {
 		final TypeBidResult result = _typeBidResource.find(textToFind, maxItems, page);
@@ -106,5 +93,21 @@ public class TypeBidServiceImpl extends BaseServiceImpl<TypeBidB, TypeBidDTO>
 		return typeBids;
 	}
 
+	
+	@Override						
+	public List<TypeBidB> find(String textToFind) {		//int maxItems, int page
+		final TypeBidResult result = _typeBidResource.find(textToFind);
+		final List<TypeBidDTO> rList = null == result.getTypeBids() ? new ArrayList<TypeBidDTO>()
+				: result.getTypeBids();
+
+		final List<TypeBidB> bids = new ArrayList<TypeBidB>();
+		for (TypeBidDTO dto : rList) {
+			final TypeBidB bean = convertDtoToBean(dto);
+			bids.add(bean);
+		}
+		return bids;
+	}
+
+	
 
 }

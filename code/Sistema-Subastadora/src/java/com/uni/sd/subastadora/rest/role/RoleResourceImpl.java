@@ -21,12 +21,16 @@ public class RoleResourceImpl extends BaseResourceImpl<RoleDTO> implements
 	@CacheEvict(value = CACHE_REGION, key = "'roles'")
 	@CachePut(value = CACHE_REGION, key = "'role_' + #role.id", condition = "#role.id!=null")
 	public RoleDTO save(RoleDTO role) {
-		RoleDTO newDto = super.save(role);
-		if (null == role.getId()) {
+		//RoleDTO newDto = super.save(role);
+		/*if (null == role.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"role_" + newDto.getId(), newDto);
-		}
-		return newDto;
+		}*/
+		
+		//return newDto;
+		final RoleDTO newRole = getWebResource().entity(role).post(
+				getDtoClass());
+		return newRole;
 	}
 
 	@Override

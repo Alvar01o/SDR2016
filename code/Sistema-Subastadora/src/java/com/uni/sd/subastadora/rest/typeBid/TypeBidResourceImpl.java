@@ -18,25 +18,25 @@ public class TypeBidResourceImpl extends BaseResourceImpl<TypeBidDTO> implements
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'typeBids'")
-	@CachePut(value = CACHE_REGION, key = "'typeBid_' + #typeBid.id", condition = "#typeBid.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'typeBids'")
+	//@CachePut(value = CACHE_REGION, key = "'typeBid_' + #typeBid.id", condition = "#typeBid.id!=null")
 	public TypeBidDTO save(TypeBidDTO typeBid) {
 		TypeBidDTO newDto = super.save(typeBid);
-		if (null == typeBid.getId()) {
+		/*if (null == typeBid.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"typeBid_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'typeBid_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'typeBid_' + #id")
 	public TypeBidDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'typeBids'")
+	//@Cacheable(value = CACHE_REGION, key = "'typeBids'")
 	public TypeBidResult getAll() {
 		
 		final TypeBidResult result = getWebResource().get(TypeBidResult.class);

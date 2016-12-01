@@ -18,25 +18,25 @@ public class BidResourceImpl extends BaseResourceImpl<BidDTO> implements
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'bids'")
-	@CachePut(value = CACHE_REGION, key = "'bid_' + #bid.id", condition = "#bid.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'bids'")
+	//@CachePut(value = CACHE_REGION, key = "'bid_' + #bid.id", condition = "#bid.id!=null")
 	public BidDTO save(BidDTO bid) {
 		BidDTO newDto = super.save(bid);
-		if (null == bid.getId()) {
+		/*if (null == bid.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"bid_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'bid_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'bid_' + #id")
 	public BidDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'bids'")
+	//@Cacheable(value = CACHE_REGION, key = "'bids'")
 	public BidResult getAll() {
 		
 		final BidResult result = getWebResource().get(BidResult.class);

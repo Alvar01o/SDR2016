@@ -18,25 +18,25 @@ public class ProductResourceImpl extends BaseResourceImpl<ProductDTO> implements
 	}
 
 	@Override
-	@CacheEvict(value = CACHE_REGION, key = "'products'")
-	@CachePut(value = CACHE_REGION, key = "'product_' + #product.id", condition = "#product.id!=null")
+	//@CacheEvict(value = CACHE_REGION, key = "'products'")
+	//@CachePut(value = CACHE_REGION, key = "'product_' + #product.id", condition = "#product.id!=null")
 	public ProductDTO save(ProductDTO product) {
 		ProductDTO newDto = super.save(product);
-		if (null == product.getId()) {
+		/*if (null == product.getId()) {
 			getCacheManager().getCache(CACHE_REGION).put(
 					"product_" + newDto.getId(), newDto);
-		}
+		}*/
 		return newDto;
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'product_' + #id")
+	//@Cacheable(value = CACHE_REGION, key = "'product_' + #id")
 	public ProductDTO getById(Integer id) {
 		return super.getById(id);
 	}
 
 	@Override
-	@Cacheable(value = CACHE_REGION, key = "'products'")
+	//@Cacheable(value = CACHE_REGION, key = "'products'")
 	public ProductResult getAll() {
 		
 		final ProductResult result = getWebResource().get(ProductResult.class);
