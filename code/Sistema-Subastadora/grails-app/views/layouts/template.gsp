@@ -6,7 +6,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="${request.contextPath}/template/assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Subastadora-platform</title>
+	<title>Paper Dashboard by Creative Tim</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -43,68 +43,60 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a class="simple-text">
-                    Subastadora
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Creative Tim
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="${request.contextPath}/inicio/index/">
-                        <i class="ti-home"></i>
-                        <p>Inicio</p>
+                    <a href="dashboard.html">
+                        <i class="ti-panel"></i>
+                        <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="${request.contextPath}/user/show/">
+                    <a href="user.html">
                         <i class="ti-user"></i>
-                        <p>Perfil de Usuario</p>
+                        <p>User Profile</p>
                     </a>
                 </li>
-                <li>
-                    <a href="${request.contextPath}/product/list/1">
+                <li class="active">
+                    <a href="table.html">
                         <i class="ti-view-list-alt"></i>
-                        <p>Mis productos</p>
+                        <p>Table List</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="ti-package"></i>
-                        <p>Mis subastas</p>
+                    <a href="typography.html">
+                        <i class="ti-text"></i>
+                        <p>Typography</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="ti-wallet"></i>
-                        <p>Mis pujas</p>
+                    <a href="icons.html">
+                        <i class="ti-pencil-alt2"></i>
+                        <p>Icons</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="ti-shopping-cart"></i>
-                        <p>Libros</p>
+                    <a href="maps.html">
+                        <i class="ti-map"></i>
+                        <p>Maps</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="ti-shopping-cart"></i>
-                        <p>Deportes</p>
+                    <a href="notifications.html">
+                        <i class="ti-bell"></i>
+                        <p>Notifications</p>
                     </a>
                 </li>
-                
-                <li>
-                    <a href="#">
-                        <i class="ti-shopping-cart"></i>
-                        <p>Indumentaria</p>
+				<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="ti-export"></i>
+                        <p>Upgrade to PRO</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="ti-shopping-cart"></i>
-                        <p>Musica</p>
-                    </a>
-                </li>
-                
             </ul>
     	</div>
     </div>
@@ -119,21 +111,21 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Acciones</a>
+                    <a class="navbar-brand" href="#">Table List</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-bar-chart"></i>
-								<p>Estadisticas</p>
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
                             </a>
                         </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
                                     <p class="notification">5</p>
-									<p>Notificaciones</p>
+									<p>Notifications</p>
 									<b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
@@ -147,7 +139,7 @@
 						<li>
                             <a href="#">
 								<i class="ti-settings"></i>
-								<p>Configuraciones</p>
+								<p>Settings</p>
                             </a>
                         </li>
                     </ul>
@@ -171,24 +163,24 @@
                     <ul>
 
                         <li>
-                            <a href="#">
-                                Subastadora
+                            <a href="http://www.creative-tim.com">
+                                Creative Tim
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="http://blog.creative-tim.com">
                                Blog
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                Licencias
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
                             </a>
                         </li>
                     </ul>
                 </nav>
 				<div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, Sistemas Distribuidos</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
                 </div>
             </div>
         </footer>

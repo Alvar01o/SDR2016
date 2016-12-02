@@ -18,11 +18,11 @@ public class ProductManager extends AbstractBaseManager {
 	}
 	
 	
-	public void addProduct(String name,  String description, CategoryEnum category, Integer price, String shippingInfo, Integer userId) {
+	public void addProduct(String name,  String description, String category, Integer price, String shippingInfo, Integer userId) {
 		
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setName(name);
-		productDTO.setCategory(category);
+		productDTO.setCategory(CategoryEnum.LIBROS);
 		productDTO.setDescription(description);
 		productDTO.setPrice(price);
 		productDTO.setShippingInfor(shippingInfo);

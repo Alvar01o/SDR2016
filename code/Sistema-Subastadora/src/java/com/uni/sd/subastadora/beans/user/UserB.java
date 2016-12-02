@@ -94,7 +94,7 @@ public class UserB extends BaseBean {
 		setLastName("lastName");
 		setPassword("password");
 		setUserName("userName");
-		setAddress("address");
+		this.setAddress("address");
 	}
 
 }

@@ -14,17 +14,15 @@ import com.uni.sd.subastadora.rest.product.IProductResource;
 import com.uni.sd.subastadora.rest.product.ProductResourceImpl;
 import com.uni.sd.subastadora.services.base.BaseServiceImpl;
 import com.uni.sd.subastadora.service.user.IUserService;
-import com.uni.sd.subastadora.service.user.UserServiceImpl;
 
 @Service("productService")
 public class ProductServiceImpl extends BaseServiceImpl<ProductB, ProductDTO>
 		implements IProductService {
-	
+	@Autowired
+	private IUserService userService;
 	@Autowired
 	private IProductResource _productResource=new ProductResourceImpl();
 	
-	@Autowired
-	private IUserService userService=new UserServiceImpl();
 	
 	public ProductServiceImpl() {
 	}
@@ -67,7 +65,7 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductB, ProductDTO>
 		
 		final ProductB productB = new ProductB(params);
 		productB.setCategory(dto.getCategory());
-		productB.setUser(userService.getById(dto.getUserId()));
+		//productB.setUser(userService.getById(dto.getUserId()));
 		
 		return productB;
 	}

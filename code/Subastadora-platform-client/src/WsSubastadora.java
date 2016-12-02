@@ -41,14 +41,8 @@ public class WsSubastadora {
 		System.out.println("\n\n Products \n");
 		ProductManager s = new ProductManager();
 		
-		s.addProduct("computadora", "acer", CategoryEnum.LIBROS, 300000, "ni idea", 1);
-		s.addProduct("audiculares", "sony", CategoryEnum.MUSICAS, 120000, "ni idea", 2);
-		s.addProduct("zapatos", "acer", CategoryEnum.PELICULAS, 400000, "ni idea", 1);
-		s.addProduct("libro", "cuento de adas", CategoryEnum.LIBROS, 180000, "ni idea", 2);
-		s.addProduct("novela", "best seller", CategoryEnum.LIBROS, 200000, "ni idea", 1);
-		s.addProduct("cd", "sony", CategoryEnum.MUSICAS, 120000, "ni idea", 2);
-		s.addProduct("zapatos", "acer", CategoryEnum.PELICULAS, 300000, "ni idea", 1);
-		s.addProduct("cuaderno", "sony", CategoryEnum.LIBROS, 520000, "ni idea", 2);
+		s.addProduct("computadora", "acer", null, 3000000, "ni idea", 1);
+		s.addProduct("audiculares", "sony", null, 120000, "ni idea", 1);
 		s.getAllProducts();
 		
 	}
@@ -60,15 +54,6 @@ public class WsSubastadora {
 		AuctionManager s = new AuctionManager();
 		s.addAuction(1, 1, formatter.parse("31-08-1982 10:20:56"));
 		s.addAuction(2, 2, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(3, 1, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(4, 2, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(5, 1, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(6, 2, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(7, 1, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(8, 2, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(2, 1, formatter.parse("31-08-1982 10:20:56"));
-		s.addAuction(4, 2, formatter.parse("31-08-1982 10:20:56"));
-		
 		s.getAllAuctions();
 		
 	}

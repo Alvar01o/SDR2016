@@ -6,7 +6,6 @@ import java.util.Map;
 
 public abstract class BaseBean implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 	private Integer _id;
 
