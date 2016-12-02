@@ -14,13 +14,12 @@ import com.uni.sd.subastadora.rest.role.IRoleResource;
 import com.uni.sd.subastadora.rest.role.RoleResourceImpl;
 import com.uni.sd.subastadora.services.base.BaseServiceImpl;
 import com.uni.sd.subastadora.service.user.IUserService;
+import com.uni.sd.subastadora.service.user.UserServiceImpl;
 
 @Service("roleService")
 public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		implements IRoleService {
 	
-	@Autowired
-	private IUserService userService;
 	
 	@Autowired
 	private IRoleResource _roleResource=new RoleResourceImpl();
@@ -64,7 +63,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		params.put("name", dto.getName());
 		
 		final RoleB productB = new RoleB(params);
-		//productB.setUser(userService.getById(dto.getUserId()));
+		
 		
 		return productB;
 	}

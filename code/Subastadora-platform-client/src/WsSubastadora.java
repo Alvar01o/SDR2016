@@ -31,8 +31,12 @@ public class WsSubastadora {
 	public static void userManager(){
 		System.out.println("\n\n Users \n");
 		UserManager s = new UserManager();
-		s.addUser("Liliana", "cualquier cosa", 1, false, null);
-		s.addUser("Elizabeth", "lalala", 1, true, "ksjhdf");
+		s.addUser("usuario1", "cualquier cosa","nombre1", "cualquier cosa", "donde sea", "correo1",1);
+		s.addUser("usuario2", "lalala", "nombre2", "lalala","donde sea", "correo2",2);
+		s.addUser("usuario3", "cualquier cosa", "nombre3", "cualquier cosa","donde sea", "correo3",3);
+		s.addUser("usuario4", "lalala", "nombre4", "lalala","donde sea", "correo4",1);
+		s.addUser("usuario5", "cualquier cosa", "nombre5", "cualquier cosa","donde sea", "correo5",2);
+		s.addUser("usuario6", "lalala", "nombre6", "lalala","usuario6", "correo6",3);
 		s.getAllUsers();
 		
 	}
@@ -41,8 +45,14 @@ public class WsSubastadora {
 		System.out.println("\n\n Products \n");
 		ProductManager s = new ProductManager();
 		
-		s.addProduct("computadora", "acer", null, 3000000, "ni idea", 1);
-		s.addProduct("audiculares", "sony", null, 120000, "ni idea", 1);
+		s.addProduct("computadora", "acer", CategoryEnum.LIBROS, 300000, "ni idea", 1);
+		s.addProduct("audiculares", "sony", CategoryEnum.MUSICAS, 120000, "ni idea", 2);
+		s.addProduct("zapatos", "acer", CategoryEnum.PELICULAS, 400000, "ni idea", 1);
+		s.addProduct("libro", "cuento de adas", CategoryEnum.LIBROS, 180000, "ni idea", 2);
+		s.addProduct("novela", "best seller", CategoryEnum.LIBROS, 200000, "ni idea", 1);
+		s.addProduct("cd", "sony", CategoryEnum.MUSICAS, 120000, "ni idea", 2);
+		s.addProduct("zapatos", "acer", CategoryEnum.PELICULAS, 300000, "ni idea", 1);
+		s.addProduct("cuaderno", "sony", CategoryEnum.LIBROS, 520000, "ni idea", 2);
 		s.getAllProducts();
 		
 	}
@@ -54,6 +64,15 @@ public class WsSubastadora {
 		AuctionManager s = new AuctionManager();
 		s.addAuction(1, 1, formatter.parse("31-08-1982 10:20:56"));
 		s.addAuction(2, 2, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(3, 1, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(4, 2, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(5, 1, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(6, 2, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(7, 1, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(8, 2, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(2, 1, formatter.parse("31-08-1982 10:20:56"));
+		s.addAuction(4, 2, formatter.parse("31-08-1982 10:20:56"));
+		
 		s.getAllAuctions();
 		
 	}

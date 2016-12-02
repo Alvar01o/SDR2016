@@ -32,11 +32,15 @@ public class UserManager extends AbstractBaseManager {
 		
 	}
 	
-	public void addUser(String name, String password, Integer rolId, boolean doctor, String matricula) {
+	public void addUser(String userName, String password, String name, String lastName,  String address, String email, Integer rolId) {
 		
 		UserDTO userDTO = new UserDTO();
 		userDTO.setName(name);
+		userDTO.setLastName(lastName);
+		userDTO.setUserName(userName);
 		userDTO.setPass(password);
+		userDTO.setAddress(address);
+		userDTO.setEmail(email);
 		userDTO.setRolId(rolId);
 		
 		

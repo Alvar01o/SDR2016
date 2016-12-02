@@ -13,7 +13,9 @@ import com.uni.sd.subastadora.dto.auction.AuctionResult;
 import com.uni.sd.subastadora.rest.auction.IAuctionResource;
 import com.uni.sd.subastadora.rest.auction.AuctionResourceImpl;
 import com.uni.sd.subastadora.service.product.IProductService;
+import com.uni.sd.subastadora.service.product.ProductServiceImpl;
 import com.uni.sd.subastadora.service.user.IUserService;
+import com.uni.sd.subastadora.service.user.UserServiceImpl;
 import com.uni.sd.subastadora.services.base.BaseServiceImpl;
 
 @Service("auctionService")
@@ -21,9 +23,9 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionB, AuctionDTO>
 		implements IAuctionService {
 	
 	@Autowired
-	private IProductService productService;
+	private IProductService productService=new ProductServiceImpl();
 	@Autowired
-	private IUserService userService;
+	private IUserService userService=new UserServiceImpl();
 	@Autowired
 	private IAuctionResource _auctionResource=new AuctionResourceImpl();
 	
@@ -65,7 +67,7 @@ public class AuctionServiceImpl extends BaseServiceImpl<AuctionB, AuctionDTO>
 		final AuctionB auctionB = new AuctionB(params);
 		auctionB.setTime(dto.getTime());
 		auctionB.setProduct(productService.getById(dto.getProductId()));
-		//auctionB.setWinner(userService.getById(dto.getWinnerId()));
+		auctionB.setWinner(userService.getById(dto.getWinnerId()));
 		return auctionB;
 	}
 
