@@ -2,15 +2,12 @@ package Sistema
 import com.uni.sd.subastadora.beans.role.RoleB
 import com.uni.sd.subastadora.service.role.IRoleService
 import com.uni.sd.subastadora.service.role.RoleServiceImpl
-import com.uni.sd.subastadora.service.user.IUserService
-import com.uni.sd.subastadora.service.user.UserServiceImpl
 
 
 class RoleController {
 
 	//services
 	def IRoleService roleService=new RoleServiceImpl()
-	def IUserService userService=new UserServiceImpl()
 
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

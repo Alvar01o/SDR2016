@@ -14,20 +14,22 @@ import com.uni.sd.subastadora.rest.user.IUserResource;
 import com.uni.sd.subastadora.rest.user.UserResourceImpl;
 import com.uni.sd.subastadora.services.base.BaseServiceImpl;
 import com.uni.sd.subastadora.service.role.IRoleService;
+import com.uni.sd.subastadora.service.role.RoleServiceImpl;
 import com.uni.sd.subastadora.service.user.IUserService;
 
 @Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<UserB, UserDTO>
 		implements IUserService {
-	@Autowired
-	private IUserService userService;
+	
 	@Autowired
 	private IUserResource _userResource=new UserResourceImpl();
 	@Autowired
-	private IRoleService _roleService;
+	private IRoleService _roleService=new RoleServiceImpl();
+	
 	
 	public UserServiceImpl() {
 	}
+	
 
 	@Override
 	public UserB save(UserB bean) {

@@ -19,8 +19,6 @@ import com.uni.sd.subastadora.service.user.IUserService;
 public class RoleServiceImpl extends BaseServiceImpl<RoleB, RoleDTO>
 		implements IRoleService {
 	
-	@Autowired
-	private IUserService userService;
 	
 	@Autowired
 	private IRoleResource _roleResource=new RoleResourceImpl();
