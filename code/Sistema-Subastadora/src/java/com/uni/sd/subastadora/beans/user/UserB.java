@@ -90,11 +90,11 @@ public class UserB extends BaseBean {
 			setId(Integer.valueOf(params.get("id")));
 		}
 		setName(params.get("name"));
-		setEmail("email");
-		setLastName("lastName");
-		setPassword("password");
-		setUserName("userName");
-		this.setAddress("address");
+		setEmail(params.get("email"));
+		setLastName(params.get("lastName" ));
+		setPassword(params.get("password" ));
+		setUserName(params.get("userName" ));
+		setAddress(params.get("address"));
 	}
 
 }

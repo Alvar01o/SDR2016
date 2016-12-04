@@ -49,6 +49,15 @@
     </div>
 </div>
 
+<script src=" ${request.contextPath}/template/js/bootstrap.min.js"></script>
+ 
+<script type="text/javascript">
+	
+	document.getElementById('li1').className = "active";
+
+</script>
+
+
 
 </body>
 

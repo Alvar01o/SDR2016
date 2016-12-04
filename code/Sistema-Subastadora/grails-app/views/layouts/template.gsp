@@ -48,57 +48,52 @@
                 </a>
             </div>
 
-            <ul class="nav">
-                <li>
+            <ul class="nav" id="navbar">
+                <li id="li1"  onClick=change(this)>
                     <a href="${request.contextPath}/inicio/index/">
                         <i class="ti-home"></i>
                         <p>Inicio</p>
                     </a>
                 </li>
-                <li>
-                    <a href="${request.contextPath}/user/show/">
+                <li id="li2" onClick=change(this)>
+                    <a href="${request.contextPath}/user/userProfile/1">
                         <i class="ti-user"></i>
                         <p>Perfil de Usuario</p>
                     </a>
                 </li>
-                <li>
+                <li id="li3" onClick=change(this)>
                     <a href="${request.contextPath}/product/list/1">
                         <i class="ti-view-list-alt"></i>
                         <p>Mis productos</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="ti-package"></i>
+                <li id="li4" onClick=change(this)>
+                    <a href="#" >
+                        <i class="ti-package" ></i>
                         <p>Mis subastas</p>
                     </a>
                 </li>
-                <li>
+                <li id=li5 onClick=change(this)>
                     <a href="#">
                         <i class="ti-wallet"></i>
                         <p>Mis pujas</p>
                     </a>
                 </li>
-                <li>
+                
+                <li id="li6" onClick=change(this)>
                     <a href="#">
                         <i class="ti-shopping-cart"></i>
                         <p>Libros</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="ti-shopping-cart"></i>
-                        <p>Deportes</p>
-                    </a>
-                </li>
                 
-                <li>
+                <li id="li7" onClick=change(this)>
                     <a href="#">
                         <i class="ti-shopping-cart"></i>
                         <p>Indumentaria</p>
                     </a>
                 </li>
-                <li>
+                <li id="li8" onClick=change(this)>
                     <a href="#">
                         <i class="ti-shopping-cart"></i>
                         <p>Musica</p>
@@ -198,10 +193,18 @@
 </div>
 
 
+ 
+<script type="text/javascript">
+
+</script>
+
 </body>
+
+
 
     <!--   Core JS Files   -->
     <script src="${request.contextPath}/template/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	
 	<script src="${request.contextPath}/template/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->

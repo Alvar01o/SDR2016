@@ -52,9 +52,13 @@ public class UserManager extends AbstractBaseManager {
 	public void getAllUsers() {
 		UserResult userResult = getJerseyClient().resource(getBaseUrl() + "/user").get(UserResult.class);
 		for (UserDTO p : userResult.getUsers()) {
-			System.out.println("Name: "+p.getName());
+			System.out.println("User Name: "+p.getUserName());
 			System.out.println("Password: "+p.getPass());
 			System.out.println("Rol: "+p.getRolId());
+			System.out.println("Last Name: "+p.getLastName());
+			System.out.println("Name: "+p.getName());
+			System.out.println("Email: "+p.getEmail());
+			System.out.println("Address: "+p.getaddress());
 			
 			
 		}
@@ -62,18 +66,26 @@ public class UserManager extends AbstractBaseManager {
 	
 	public void getByIdUser(int id){
 		UserDTO userResult = getJerseyClient().resource(getBaseUrl() + "/user/"+id).get(UserDTO.class);
-		System.out.println("Name: "+ userResult.getName());
+		System.out.println("User Name: "+ userResult.getUserName());
 		System.out.println("Password: "+ userResult.getPass());
 		System.out.println("Rol: "+ userResult.getRolId());
+		System.out.println("Last Name: "+ userResult.getLastName());
+		System.out.println("Name: "+ userResult.getName());
+		System.out.println("Email: "+ userResult.getEmail());
+		System.out.println("Address: "+ userResult.getaddress());
 		
 	}
 	
 	public void getByPropertyUser(String textToFind){
 		UserResult patResult = getJerseyClient().resource(getBaseUrl() + "/user/search/"+textToFind).get(UserResult.class);
 		for (UserDTO c : patResult.getUsers()) {
-			System.out.println("Name: "+c.getName());
+			System.out.println("User Name: "+c.getUserName());
 			System.out.println("Password: "+c.getPass());
 			System.out.println("Rol: "+c.getRolId());
+			System.out.println("Last Name: "+c.getLastName());
+			System.out.println("Name: "+c.getName());
+			System.out.println("Email: "+c.getEmail());
+			System.out.println("Address: "+c.getaddress());
 			
 		}
 		

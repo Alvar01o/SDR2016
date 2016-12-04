@@ -79,14 +79,14 @@ public class ProductB extends BaseBean {
 			setId(Integer.valueOf(params.get("id")));
 		}
 		setName(params.get("name"));
-		this.setDescription("description");
-		this.setShippingInfor("shippingInfor");
+		setDescription(params.get("description"));
+		setShippingInfor(params.get("shippingInfor"));
 		if(null != params.get("price")){
              setPrice(Integer.parseInt(params.get("price")));
         }
      
-		if (!StringUtils.isBlank(params.get("status"))) {
-			setCategory(CategoryEnum.valueOf(params.get("status")));
+		if (!StringUtils.isBlank(params.get("category"))) {
+			setCategory(CategoryEnum.valueOf(params.get("category")));
 
 		}
 	}

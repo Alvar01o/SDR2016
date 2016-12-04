@@ -13,7 +13,7 @@
         	<div class="row">
             	<div class="panel panel-default">		
                 	<div class="panel-heading">
-						<h4><strong>Registrar Rol</strong></h4>
+						<h4><strong>Registrarse</strong></h4>
 					</div>
 					<div class="panel-body">
 						<g:form action="save" >
@@ -34,4 +34,14 @@
 		<!-- Bootstrap Core JavaScript -->
     <script src=" ${request.contextPath}/template/js/bootstrap.min.js"></script>
 	</body>
+	
+	<script language='javascript' type='text/javascript'>
+    function verificar(input) {
+        if (input.value != document.getElementById('pass1').value) {
+            input.setCustomValidity('La contraseña no coincide.');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+</script>
 </html>
