@@ -16,6 +16,14 @@
                             <div class="header">
                                 <h4 class="title">Products</h4>
                                 <p class="category">Lista</p>
+                                
+                                <div class="text-right">
+                                
+                                		<g:link action="create" class="btn btn-info btn-fill btn-wd" >${}<i class="glyphicon glyphicon-plus"></i> Nuevo Producto</g:link>
+                                     	
+                                    </div>
+                                <div class="clearfix"></div>
+                                
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">

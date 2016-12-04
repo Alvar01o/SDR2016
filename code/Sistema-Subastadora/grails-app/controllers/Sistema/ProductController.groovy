@@ -4,6 +4,7 @@ import com.uni.sd.subastadora.service.product.IProductService
 import com.uni.sd.subastadora.service.product.ProductServiceImpl
 import com.uni.sd.subastadora.service.user.IUserService
 import com.uni.sd.subastadora.service.user.UserServiceImpl
+import com.uni.sd.subastadora.util.CategoryEnum
 
 
 class ProductController {
@@ -64,6 +65,10 @@ class ProductController {
 
 	def edit(Long id) {
 		def productInstance = productService.getById(id.intValue())
+		
+		def users = userService.getAll()
+		
+		
 		if (!productInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [
 				message(code: 'product.label', default: 'Product'),
@@ -73,44 +78,22 @@ class ProductController {
 			return
 		}
 
-		[productInstance: productInstance]
+		[productInstance: productInstance, userInstanceList:users]
 	}
 
 	def update(Long id, Long version) {
-		def productInstance = productService.getById(id.intValue())
-		if (!productInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'product.label', default: 'Product'),
-				id
-			])
-			redirect(action: "list")
-			return
-		}
-
-		if (version != null) {
-			if (productInstance.version > version) {
-				productInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						[
-							message(code: 'product.label', default: 'Product')] as Object[],
-						"Another user has updated this Client while you were editing")
-				render(view: "edit", model: [productInstance: productInstance])
-				return
-			}
-		}
-
-		productInstance.properties = params
-
-		if (!productInstance.save(flush: true)) {
-			render(view: "edit", model: [productInstance: productInstance])
-			return
-		}
-
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'product.label', default: 'Product'),
-			productInstance.id
-		])
-		redirect(action: "show", id: productInstance.id)
+		def productInstance = new ProductB(params)
+		productInstance.setId(Integer.parseInt(params.get("edit")))
+		productInstance.setName(params.get("name"))
+		productInstance.setDescription(params.get("description"))
+		productInstance.setPrice(Integer.parseInt(params.get("price")))
+		productInstance.setShippingInfor(params.get("shippingInfor"))
+		productInstance.setCategory(CategoryEnum.valueOf(params.get("category")))
+		productInstance.setUser(userService.getById(Integer.valueOf(params.userId)))
+		productService.save(productInstance)
+		redirect(action: "list")
 	}
+
 
 }
 

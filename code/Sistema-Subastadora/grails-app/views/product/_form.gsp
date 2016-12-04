@@ -49,10 +49,10 @@
 	<div class="col-md-6">
 
 				<div class="fieldcontain required">
-					<label for="category"> <g:message code="Diagnostico" />
+					<label for="category"> <g:message code="category" />
 						<span class="required-indicator">*</span>
 					</label>
-					<g:select name="Categoria" class="form-control"
+					<g:select name="category" class="form-control"
 						from="${CategoryEnum.values()}"
 						value="${productInstance?.category}" optionKey="key" required=""
 						noSelection="${['SIN_INDICIOS':'Seleccionar categoria']}"></g:select>

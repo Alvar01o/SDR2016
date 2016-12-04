@@ -121,7 +121,7 @@
                             <div class="content">
                             <g:form action="update2">
                                 
-                                    <div class="row">
+                            <div class="row">
                                         
                              <div class="col-md-6">
 								<label>Nombre de Usuario</label>
@@ -185,8 +185,7 @@ futuro.</textarea>
                                     <div class="text-center">
                                      	<button type="submit" class="btn btn-info btn-fill btn-wd " name="edit"
 										value="${userInstance?.id}">
-										<i class="fa fa-primary"></i>Actualizar Perfil
-									</button>
+										<i class="fa fa-primary"></i>Actualizar Perfil</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 
